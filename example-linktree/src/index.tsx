@@ -1,68 +1,131 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
-import Linkees, { CHANNEL_TYPES } from "linkees";
-
 import "./css/normalize.css";
 
-const items = [
-  {
-    title: "Website",
-    subtitle: "Look at my work!",
-    type: CHANNEL_TYPES.WEBSITE,
-    link: "https://sagnik-wtf.vercel.app", //your personal website or portfolio  link
-  },
-  {
-    title: "GitHub",
-    subtitle: "@heysagnik | 🏡 to all my open-source projects",
-    type: CHANNEL_TYPES.GITHUB,
-    link: "https://github.com/heysagnik", //Github Profile link
-  },
-  {
-    title: "Instagram",
-    subtitle: "@heysagnik |  Shots of my life 🙂",
-    type: CHANNEL_TYPES.INSTAGRAM,
-    link: "https://instagram.com/heysagnik", //instagram profile link
-  },
-  {
-    title: "Twitter",
-    subtitle: "@heysagnik | 😉",
-    type: CHANNEL_TYPES.TWITTER,
-    link: "https://twitter.com/heysagnik", // twitter profile link
-  },
-  {
-    title: "LinkedIn",
-    subtitle: "Know more about my profession 👨‍💼",
-    type: CHANNEL_TYPES.LINKEDIN,
-    link: "https://www.linkedin.com/in/heysagnik/", // linkedin
-  },
-  {
-    title: "YouTube",
-    subtitle: "CODER SAGNIK | Official channel of mine",
-    type: CHANNEL_TYPES.YOUTUBE,
-    link: "https://www.youtube.com/channel/UCOUa9hvd4sJWQWQRIQctbSg", //youtube channel link
-  },
+// ✅ NEW: Orbis Comments Component
+import { OrbisComments } from "./components/OrbisComments";
 
-  {
-    title: "Dribbble",
-    subtitle: "@virtuonic | shots of dezigns ",
-    type: CHANNEL_TYPES.DRIBBLE,
-    link: "https://dribbble.com/virtuonic", // Dribbble profile link
-  },
-  {
-    title: "Telegram",
-    subtitle: "@heysagnik | Chat with me instantly ",
-    type: CHANNEL_TYPES.TELEGRAM,
-    link: "https://telegram.me/heysagnik", //Telegram Pofile
-  },
-];
+// 🎥 Types for Shorts Player
+interface ShortsPlayerProps {
+  id: string;
+}
 
+// 🎥 Shorts Player Component (9:16 Aspect Ratio)
+const ShortsPlayer: React.FC<ShortsPlayerProps> = ({ id }) => (
+  <div className="shorts-container">
+    <iframe
+      width="100%"
+      height="100%"
+      src={`https://www.youtube.com/embed/${id}?autoplay=1&mute=1`}
+      frameBorder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      className="shorts-iframe"
+      title={`YouTube Short ${id}`}
+      loading="lazy"
+      referrerPolicy="strict-origin-when-cross-origin"
+    />
+  </div>
+);
+
+// 🎥 Trending Shorts IDs
+const shortsIds = [
+  "Py9VfRsFZbQ",
+  "2yQrUky_2tE",
+  "5SdG_cQs_ec",
+  "sblsLUzuCjc",
+  "fi6Lu65fB5E",
+  "QjBv_ctwf3A",
+  "XUCs4e0d-MM",
+  "GsvGKb9ENcM",
+  "go_4XaGvH0c",
+  "Xrq_TDyABx8",
+  "kLRrHKZOeSI",
+  "hTpE1cDB4aM",
+  "LHkvQQmnuUU",
+] as const;
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+type ShortsId = typeof shortsIds[number];
+
+// 🚀 Root App Component
+const App: React.FC = () => {
+  return (
+    <>
+      <header className="header">
+        <img
+          src="https://i.imgur.com/MBZMIXq.jpeg"
+          alt="Jersey.FM Logo"
+          className="header-logo"
+        />
+        <h1 className="header-title">JERSEY.FM TUBE</h1>
+        <p className="header-description">
+          The hottest Jersey Club ReelMix Shorts on YouTube, powered by{" "}
+          <a href="https://jersey.fm" target="_blank" rel="noopener noreferrer">
+            JERSEY.FM
+          </a>
+          . Mint your fav 🔥 ReelMix on{" "}
+          <a href="https://tv.jersey.fm" target="_blank" rel="noopener noreferrer">
+            📺 TV
+          </a>
+          , then flip it in our{" "}
+          <a
+            href="https://fun.luvnft.com/groups/jersey-club-fm"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LUV NFT FUN
+          </a>{" "}
+          social club for 100% in $ETH crypto. Solana{" "}
+          <a
+            href="https://pump.fun/coin/FM5eNvujxrqYEnzsfSDTT1NGDXkP49sAQbCNQ6XNpump"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            $JERSEY
+          </a>{" "}
+          memecoins are used for tipping Jersey Club 🎶 creators on 📺 TV or our livestream
+          🍊 {" "}
+          <a
+            href="https://orange.jersey.fm/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ORANGE.
+          </a>
+        </p>
+      </header>
+
+      <div className="shorts-feed">
+        <h2>
+          <span role="img" aria-label="vinyl emoji">
+            💿
+          </span>{" "}
+          JERSEY CLUB SHORTS
+        </h2>
+        {shortsIds.map((id) => (
+          <div key={id} className="short-block">
+            <ShortsPlayer id={id} />
+            <OrbisComments context={`short-${id}`} />
+          </div>
+        ))}
+      </div>
+    </>
+  );
+};
+
+// 🛠️ Render to the DOM
 const rootElement = document.getElementById("root");
 if (rootElement) {
-  ReactDOM.createRoot(rootElement)?.render(
-    <React.StrictMode>
-      <Linkees cardItems={items} name={"Sagnik."} />{" "}
-      {/* headerAvatar={'any image url'}*/}
-    </React.StrictMode>
-  );
+  try {
+    ReactDOM.createRoot(rootElement).render(
+      <React.StrictMode>
+        <App />
+      </React.StrictMode>
+    );
+  } catch (error) {
+    console.error("Failed to render app:", error);
+  }
+} else {
+  console.error("Root element not found");
 }
