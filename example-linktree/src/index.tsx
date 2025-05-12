@@ -27,10 +27,7 @@ const ShortsPlayer: React.FC<ShortsPlayerProps> = ({ id }) => (
 
 // 🎥 Shorts IDs by Category
 const redShorts = ["Xrq_TDyABx8", "kLRrHKZOeSI"];
-const blueShorts = [
-  "Py9VfRsFZbQ", "2yQrUky_2tE", "5SdG_cQs_ec",
-  "sblsLUzuCjc", "fi6Lu65fB5E", "QjBv_ctwf3A"
-];
+const blueShorts = ["DTO8WF5pjZY"];
 const greenShorts = ["hTpE1cDB4aM", "LHkvQQmnuUU"];
 const yellowShorts = ["GsvGKb9ENcM"];
 const purpleShorts = ["go_4XaGvH0c", "XUCs4e0d-MM"];
@@ -41,11 +38,11 @@ const App: React.FC = () => {
     <>
       <header className="header">
         <img
-          src="https://i.imgur.com/FiaPmDF.jpeg"
+          src="https://i.imgur.com/ebt73cn.jpeg"
           alt="ACYFUN"
           className="header-logo"
         />
-        <h1 className="header-title">🌊 ACY 😎 FUN</h1>
+        <h1 className="header-title">🌊ACY 😎FUN</h1>
         <p className="header-description">
           Have Atlantic City Fun 🎢 Your Ultimate YouTube Tour Guide to the 💯 Best Vibes in AC 🎥✨.
           Email have@acyfun.com for a paid YouTube ad campaign.
