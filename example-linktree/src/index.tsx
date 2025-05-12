@@ -25,25 +25,15 @@ const ShortsPlayer: React.FC<ShortsPlayerProps> = ({ id }) => (
   </div>
 );
 
-// 🎥 Trending Shorts IDs
-const shortsIds = [
-  "Py9VfRsFZbQ",
-  "2yQrUky_2tE",
-  "5SdG_cQs_ec",
-  "sblsLUzuCjc",
-  "fi6Lu65fB5E",
-  "QjBv_ctwf3A",
-  "XUCs4e0d-MM",
-  "GsvGKb9ENcM",
-  "go_4XaGvH0c",
-  "Xrq_TDyABx8",
-  "kLRrHKZOeSI",
-  "hTpE1cDB4aM",
-  "LHkvQQmnuUU",
-] as const;
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-type ShortsId = typeof shortsIds[number];
+// 🎥 Shorts IDs by Category
+const redShorts = ["Xrq_TDyABx8", "kLRrHKZOeSI"];
+const blueShorts = [
+  "Py9VfRsFZbQ", "2yQrUky_2tE", "5SdG_cQs_ec",
+  "sblsLUzuCjc", "fi6Lu65fB5E", "QjBv_ctwf3A"
+];
+const greenShorts = ["hTpE1cDB4aM", "LHkvQQmnuUU"];
+const yellowShorts = ["GsvGKb9ENcM"];
+const purpleShorts = ["go_4XaGvH0c", "XUCs4e0d-MM"];
 
 // 🚀 Root App Component
 const App: React.FC = () => {
@@ -51,56 +41,71 @@ const App: React.FC = () => {
     <>
       <header className="header">
         <img
-          src="https://i.imgur.com/MBZMIXq.jpeg"
-          alt="Jersey.FM Logo"
+          src="https://i.imgur.com/FiaPmDF.jpeg"
+          alt="ACYFUN"
           className="header-logo"
         />
-        <h1 className="header-title">JERSEY.FM TUBE</h1>
+        <h1 className="header-title">🌊 ACY 😎 FUN</h1>
         <p className="header-description">
-          The hottest Jersey Club ReelMix Shorts on YouTube, powered by{" "}
-          <a href="https://jersey.fm" target="_blank" rel="noopener noreferrer">
-            JERSEY.FM
-          </a>
-          . Mint your fav 🔥 ReelMix on{" "}
-          <a href="https://tv.jersey.fm" target="_blank" rel="noopener noreferrer">
-            📺 TV
-          </a>
-          , then flip it in our{" "}
-          <a
-            href="https://fun.luvnft.com/groups/jersey-club-fm"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            LUV NFT FUN
-          </a>{" "}
-          social club for 100% in $ETH crypto. Solana{" "}
-          <a
-            href="https://pump.fun/coin/FM5eNvujxrqYEnzsfSDTT1NGDXkP49sAQbCNQ6XNpump"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            $JERSEY
-          </a>{" "}
-          memecoins are used for tipping Jersey Club 🎶 creators on 📺 TV or our livestream
-          🍊 {" "}
-          <a
-            href="https://orange.jersey.fm/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            ORANGE.
-          </a>
+          Have Atlantic City Fun 🎢 Your Ultimate YouTube Tour Guide to the 💯 Best Vibes in AC 🎥✨.
+          Email have@acyfun.com for a paid YouTube ad campaign.
         </p>
       </header>
 
+      {/* 🟥 Events Block */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="vinyl emoji">
-            💿
-          </span>{" "}
-          JERSEY CLUB SHORTS
+          <span role="img" aria-label="red block">🟥</span> AC Events
         </h2>
-        {shortsIds.map((id) => (
+        {redShorts.map((id) => (
+          <div key={id} className="short-block">
+            <ShortsPlayer id={id} />
+          </div>
+        ))}
+      </div>
+
+      {/* 🟦 Business Block */}
+      <div className="shorts-feed">
+        <h2>
+          <span role="img" aria-label="blue block">🟦</span> Atlantic City, Margate, Ventnor Biz
+        </h2>
+        {blueShorts.map((id) => (
+          <div key={id} className="short-block">
+            <ShortsPlayer id={id} />
+          </div>
+        ))}
+      </div>
+
+      {/* 🟩 Real Estate Shorts */}
+      <div className="shorts-feed">
+        <h2>
+          <span role="img" aria-label="green block">🟩</span> AC Metro Real Estate 🏡
+        </h2>
+        {greenShorts.map((id) => (
+          <div key={id} className="short-block">
+            <ShortsPlayer id={id} />
+          </div>
+        ))}
+      </div>
+
+      {/* 🟨 Food Shorts */}
+      <div className="shorts-feed">
+        <h2>
+          <span role="img" aria-label="yellow block">🟨</span> Food & Dining 🍔
+        </h2>
+        {yellowShorts.map((id) => (
+          <div key={id} className="short-block">
+            <ShortsPlayer id={id} />
+          </div>
+        ))}
+      </div>
+
+      {/* 🟪 Artist Shorts */}
+      <div className="shorts-feed">
+        <h2>
+          <span role="img" aria-label="purple block">🟪</span> Local Artists 🎨
+        </h2>
+        {purpleShorts.map((id) => (
           <div key={id} className="short-block">
             <ShortsPlayer id={id} />
           </div>

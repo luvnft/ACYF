@@ -5,21 +5,18 @@ module.exports = function override(config) {
     ...config.resolve,
     fallback: {
       ...config.resolve.fallback,
+      process: require.resolve("process"),
       stream: require.resolve("stream-browserify"),
       buffer: require.resolve("buffer"),
       crypto: require.resolve("crypto-browserify"),
       assert: require.resolve("assert"),
-    },
-    alias: {
-      ...config.resolve.alias,
-      process: require.resolve("process/browser.js"), // ADD `.js`
     },
   };
 
   config.plugins = [
     ...(config.plugins || []),
     new webpack.ProvidePlugin({
-      process: "process/browser.js", // ADD `.js`
+      process: "process",
       Buffer: ["buffer", "Buffer"],
     }),
   ];
