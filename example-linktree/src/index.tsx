@@ -2,9 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./css/normalize.css";
 
-// ✅ NEW: Orbis Comments Component
-import { OrbisComments } from "./components/OrbisComments";
-
 // 🎥 Types for Shorts Player
 interface ShortsPlayerProps {
   id: string;
@@ -106,7 +103,6 @@ const App: React.FC = () => {
         {shortsIds.map((id) => (
           <div key={id} className="short-block">
             <ShortsPlayer id={id} />
-            <OrbisComments context={`short-${id}`} />
           </div>
         ))}
       </div>
