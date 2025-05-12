@@ -22,6 +22,9 @@ const ShortsPlayer: React.FC<ShortsPlayerProps> = ({ id }) => (
       loading="lazy"
       referrerPolicy="strict-origin-when-cross-origin"
     />
+    <div className="mint-button">
+      <button className="cta-button">🪙 MINT NOW</button>
+    </div>
   </div>
 );
 
@@ -31,6 +34,9 @@ const blueShorts = ["DTO8WF5pjZY"];
 const greenShorts = ["hTpE1cDB4aM", "LHkvQQmnuUU"];
 const yellowShorts = ["GsvGKb9ENcM"];
 const purpleShorts = ["go_4XaGvH0c", "XUCs4e0d-MM"];
+
+// 🎥 Pinned Post
+const pinnedShortId = "6BWeiXgG6IA";
 
 // 🚀 Root App Component
 const App: React.FC = () => {
@@ -44,9 +50,36 @@ const App: React.FC = () => {
         />
         <h1 className="header-title">🌊ACY 😎FUN</h1>
         <p className="header-description">
-          Have Atlantic City Fun 🎢 Your Ultimate YouTube Tour Guide to the 💯 Best Vibes in AC 🎥✨.
-          Email have@acyfun.com for a paid YouTube ad campaign.
+          Have Atlantic City Fun 🎢 Your Ultimate YouTube Tour Guide to the 💯 Best Vibes in AC 🎥✨.<br/>
+         <br></br>
         </p>
+
+{/* 🔗 Emoji Navigation Row */}
+<div className="emoji-nav flex items-center justify-center gap-4 py-4">
+  {[
+    { emoji: "🗺️", label: "Map", href: "https://maps.google.com/?q=Atlantic+City" },
+    { emoji: "✈️", label: "Plane", href: "https://www.google.com/flights?q=atlantic+city" },
+    { emoji: "📻", label: "Radio", href: "https://jersey.fm" },
+    { emoji: "💌", label: "Email", href: "mailto:have@acyfun.com" },
+  ].map(({ emoji, label, href }) => (
+    <a
+      key={label}
+      href={href}
+      className="flex flex-col items-center px-4 py-2 bg-white text-black rounded-lg shadow hover:bg-gray-100 transition"
+    >
+      <span className="text-2xl">{emoji}</span>
+      <span className="text-sm font-medium mt-1">{label}</span>
+    </a>
+  ))}
+</div>
+
+        {/* 📌 Pinned Post */}
+        <div className="shorts-feed pinned">
+          <h2>
+            <span role="img" aria-label="pin">📌</span> Featured Short
+          </h2>
+          <ShortsPlayer id={pinnedShortId} />
+        </div>
       </header>
 
       {/* 🟥 Events Block */}
@@ -76,7 +109,7 @@ const App: React.FC = () => {
       {/* 🟩 Real Estate Shorts */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="green block">🟩</span> AC Metro Real Estate 🏡
+          <span role="img" aria-label="green block">🟩</span> Real Estate 🏡
         </h2>
         {greenShorts.map((id) => (
           <div key={id} className="short-block">
