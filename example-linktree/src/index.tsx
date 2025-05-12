@@ -55,7 +55,7 @@ const App: React.FC = () => {
         </p>
 
 {/* 🔗 Emoji Navigation Row */}
-<div className="emoji-nav flex items-center justify-center gap-4 py-4">
+<div className="emoji-nav flex items-center justify-center gap-6 py-4">
   {[
     { emoji: "🗺️", label: "Map", href: "https://maps.google.com/?q=Atlantic+City" },
     { emoji: "✈️", label: "Plane", href: "https://www.google.com/flights?q=atlantic+city" },
@@ -67,11 +67,12 @@ const App: React.FC = () => {
       href={href}
       className="flex flex-col items-center px-4 py-2 bg-white text-black rounded-lg shadow hover:bg-gray-100 transition"
     >
-      <span className="text-2xl">{emoji}</span>
-      <span className="text-sm font-medium mt-1">{label}</span>
+      <span className="text-3xl">{emoji}</span>
+      <span className="text-sm font-semibold mt-2 text-blue-400 hover:text-blue-600">{label}</span>
     </a>
   ))}
 </div>
+
 
         {/* 📌 Pinned Post */}
         <div className="shorts-feed pinned">
