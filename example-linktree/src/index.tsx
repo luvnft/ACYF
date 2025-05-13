@@ -96,7 +96,7 @@ const App: React.FC = () => {
           <span role="img" aria-label="pin">
             📌
           </span>{" "}
-          Pinned Short Ad
+          ADS
         </h2>
         <ShortsPlayer id={pinnedShortId} />
       </div>
@@ -107,7 +107,7 @@ const App: React.FC = () => {
           <span role="img" aria-label="red block">
             🟥
           </span>{" "}
-          Atlantic City Events
+          EVENTS 🎟️
         </h2>
         {redShorts.map((id) => (
           <div key={id} className="short-block">
@@ -122,7 +122,7 @@ const App: React.FC = () => {
           <span role="img" aria-label="blue block">
             🟦
           </span>{" "}
-          Atlantic City, Margate, Ventnor
+          METRO ACY 🎰
         </h2>
         {blueShorts.map((id) => (
           <div key={id} className="short-block">
@@ -137,7 +137,7 @@ const App: React.FC = () => {
           <span role="img" aria-label="green block">
             🟩
           </span>{" "}
-          Real Estate 🏡
+          REEL ESTATE 🏡
         </h2>
         {greenShorts.map((id) => (
           <div key={id} className="short-block">
@@ -152,7 +152,7 @@ const App: React.FC = () => {
           <span role="img" aria-label="yellow block">
             🟨
           </span>{" "}
-          Food & Dining 🍔
+          FOODIES 🍔
         </h2>
         {yellowShorts.map((id) => (
           <div key={id} className="short-block">
@@ -167,7 +167,7 @@ const App: React.FC = () => {
           <span role="img" aria-label="purple block">
             🟪
           </span>{" "}
-          Neighborhoods 🎨
+          NEIGHBORHOODS 🎨
         </h2>
         {purpleShorts.map((id) => (
           <div key={id} className="short-block">
@@ -185,10 +185,10 @@ const App: React.FC = () => {
               label: "MAP",
               href: "https://maps.google.com/?q=Atlantic+City",
             },
-            { emoji: "🤳", label: "SOCIAL", href: "https://fun.luvnft.com" },
+            { emoji: "🤳", label: "FUN SOCIAL", href: "https://fun.luvnft.com" },
             {
               emoji: "📻",
-              label: "JERSEY CLUB",
+              label: "JERSEY.FM",
               href: "https://jersey.fm",
             },
             { emoji: "💌", label: "Email", href: "mailto:have@acyfun.com" },
