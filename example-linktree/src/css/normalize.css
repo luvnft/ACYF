@@ -2132,3 +2132,54 @@ th {
 textarea {
   font-family: inherit;
 }
+/* TikTok-style Emoji Navigation */
+.emoji-nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem; /* Increased spacing between buttons */
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  background-color: #000;
+}
+
+.emoji-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  width: 80px;
+  transition: transform 0.2s;
+}
+
+.emoji-button:hover {
+  transform: scale(1.1);
+}
+
+.emoji-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+}
+
+.emoji-label {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.tiktok-link {
+  color: #69c9d0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.tiktok-link:hover {
+  text-decoration: underline;
+}

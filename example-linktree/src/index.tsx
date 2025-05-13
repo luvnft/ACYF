@@ -31,9 +31,9 @@ const ShortsPlayer: React.FC<ShortsPlayerProps> = ({ id }) => (
 // 🎥 Shorts IDs by Category
 const redShorts = ["Xrq_TDyABx8", "kLRrHKZOeSI"];
 const blueShorts = ["DTO8WF5pjZY"];
-const greenShorts = ["hTpE1cDB4aM", "LHkvQQmnuUU"];
+const greenShorts = ["rFSQfMyrgM4"];
 const yellowShorts = ["GsvGKb9ENcM"];
-const purpleShorts = ["go_4XaGvH0c", "XUCs4e0d-MM"];
+const purpleShorts = ["go_4XaGvH0c"];
 
 // 🎥 Pinned Post
 const pinnedShortId = "6BWeiXgG6IA";
@@ -42,42 +42,46 @@ const pinnedShortId = "6BWeiXgG6IA";
 const App: React.FC = () => {
   return (
     <>
-      <header className="header">
-        <img
-          src="https://i.imgur.com/ebt73cn.jpeg"
-          alt="ACYFUN"
-          className="header-logo"
-        />
-        <h1 className="header-title">🌊ACY 😎FUN</h1>
-        <p className="header-description">
-          Have Atlantic City Fun 🎢 Your Ultimate YouTube Tour Guide to the 💯 Best Vibes in AC 🎥✨.<br/>
-         <br></br>
-        </p>
+<header className="header">
+  <img
+    src="https://i.imgur.com/ebt73cn.jpeg"
+    alt="ACYFUN"
+    className="header-logo"
+  />
+  <h1 className="header-title">✨Have 🌊ACY (Atlantic City) 😎FUN</h1>
+  <p className="header-description">
+    🎢 AC(Y)ouTube Shorts Tour Guide to the 💯 Best Vibes in City 🎥. Follow us on TikTok
+    <a href="https://tiktok.com/@acyfun" target="_blank" rel="noopener noreferrer" className="tiktok-link"> @ACYFUN</a> 
+    and tap the 🪄 wand to use our 🎙️ ACYFUN Podcast AR effect to be featured.<br/>
+    <br/>
+  </p>
 
-{/* 🔗 Emoji Navigation Row */}
-<div className="emoji-nav flex items-center justify-center gap-6 py-4">
-  {[
-    { emoji: "🗺️", label: "Map", href: "https://maps.google.com/?q=Atlantic+City" },
-    { emoji: "✈️", label: "Plane", href: "https://www.google.com/flights?q=atlantic+city" },
-    { emoji: "📻", label: "Radio", href: "https://jersey.fm" },
-    { emoji: "💌", label: "Email", href: "mailto:have@acyfun.com" },
-  ].map(({ emoji, label, href }) => (
-    <a
-      key={label}
-      href={href}
-      className="flex flex-col items-center px-4 py-2 bg-white text-black rounded-lg shadow hover:bg-gray-100 transition"
-    >
-      <span className="text-3xl">{emoji}</span>
-      <span className="text-sm font-semibold mt-2 text-blue-400 hover:text-blue-100">{label}</span>
-    </a>
-  ))}
-</div>
+  {/* TikTok-style Emoji Navigation Row */}
+  <div className="emoji-nav">
+    {[
+      { emoji: "🗺️", label: "Map", href: "https://maps.google.com/?q=Atlantic+City" },
+      { emoji: "✈️", label: "Plane", href: "https://www.google.com/flights?q=atlantic+city" },
+      { emoji: "📻", label: "Radio", href: "https://jersey.fm" },
+      { emoji: "💌", label: "Email", href: "mailto:have@acyfun.com" },
+    ].map(({ emoji, label, href }) => (
+      <a
+        key={label}
+        href={href}
+        className="emoji-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span className="emoji-icon">{emoji}</span>
+        <span className="emoji-label">{label}</span>
+      </a>
+    ))}
+  </div>
 
 
         {/* 📌 Pinned Post */}
         <div className="shorts-feed pinned">
           <h2>
-            <span role="img" aria-label="pin">📌</span> Featured Short
+            <span role="img" aria-label="pin">📌</span> Pinned Short Ad
           </h2>
           <ShortsPlayer id={pinnedShortId} />
         </div>
@@ -86,7 +90,7 @@ const App: React.FC = () => {
       {/* 🟥 Events Block */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="red block">🟥</span> AC Events
+          <span role="img" aria-label="red block">🟥</span> Atlantic City Events
         </h2>
         {redShorts.map((id) => (
           <div key={id} className="short-block">
@@ -134,7 +138,7 @@ const App: React.FC = () => {
       {/* 🟪 Artist Shorts */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="purple block">🟪</span> Local Artists 🎨
+          <span role="img" aria-label="purple block">🟪</span> Neighborhoods 🎨
         </h2>
         {purpleShorts.map((id) => (
           <div key={id} className="short-block">
