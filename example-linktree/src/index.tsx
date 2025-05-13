@@ -68,7 +68,7 @@ const App: React.FC = () => {
       className="flex flex-col items-center px-4 py-2 bg-white text-black rounded-lg shadow hover:bg-gray-100 transition"
     >
       <span className="text-3xl">{emoji}</span>
-      <span className="text-sm font-semibold mt-2 text-blue-400 hover:text-blue-600">{label}</span>
+      <span className="text-sm font-semibold mt-2 text-blue-400 hover:text-blue-100">{label}</span>
     </a>
   ))}
 </div>
