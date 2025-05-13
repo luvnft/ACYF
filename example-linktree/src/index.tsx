@@ -42,26 +42,27 @@ const pinnedShortId = "6BWeiXgG6IA";
 const App: React.FC = () => {
   return (
     <>
-      <header className="header">
-        <img
-          src="https://i.imgur.com/ebt73cn.jpeg"
-          alt="ACYFUN"
-          className="header-logo"
-        />
-        <h1 className="header-title">✨ Have 🌊 ACY (Atlantic City) 😎 FUN</h1>
-        <p className="header-description">
-          🎢 AC(Y)ouTube Shorts Tour Guide to the 💯 Best Vibes in the City 🎥. Follow us on TikTok
-          <a
-            href="https://tiktok.com/@acyfun"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="tiktok-link"
-          >
-            @ACYFUN
-          </a>
-          <br />
-          <br />
-        </p>
+<header className="header">
+  <img
+    src="https://i.imgur.com/ebt73cn.jpeg"
+    alt="ACYFUN"
+    className="header-logo"
+  />
+  <h1 className="header-title">✨ Have 🌊 ACY (Atlantic City) 😎 FUN</h1>
+  <p className="header-description">
+    🎢 AC(Y)ouTube Shorts Tour Guide to the 💯 Best Vibes in the City 🎥. Follow us on TikTok&nbsp;
+    <a
+      href="https://tiktok.com/@acyfun"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="tiktok-link"
+    >
+      @ACYFUN
+    </a>
+    <br />
+    <br />
+  </p>
+</header>
 
         {/* eTikTok-style Emoji Navigation Row */}
         <div className="emoji-nav">
