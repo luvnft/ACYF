@@ -52,7 +52,7 @@ const App: React.FC = () => {
   <p className="header-description">
     🎢 AC(Y)ouTube Shorts Tour Guide to the 💯 Best Vibes in City 🎥. Follow us on TikTok
     <a href="https://tiktok.com/@acyfun" target="_blank" rel="noopener noreferrer" className="tiktok-link"> @ACYFUN</a> 
-    and tap the 🪄 wand to use our 🎙️ ACYFUN Podcast AR effect to be featured.<br/>
+     and tap the 🪄 wand to use our 🎙️ ACYFUN Podcast AR effect to be featured.<br/>
     <br/>
   </p>
 
