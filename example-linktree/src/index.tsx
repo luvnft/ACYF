@@ -32,7 +32,7 @@ const ShortsPlayer: React.FC<ShortsPlayerProps> = ({ id }) => (
 const redShorts = ["xOVj-JCwRCY"];
 const blueShorts = ["DTO8WF5pjZY"];
 const greenShorts = ["rFSQfMyrgM4"];
-const yellowShorts = ["GsvGKb9ENcM"];
+const yellowShorts = ["wrzo663H8OA"];
 const purpleShorts = ["go_4XaGvH0c"];
 
 // 🎥 Pinned Post
