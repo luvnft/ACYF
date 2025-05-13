@@ -75,7 +75,7 @@ const App: React.FC = () => {
           },
           { emoji: "🤳", label: "FUN SOCIAL", href: "https://fun.luvnft.com" },
           { emoji: "📻", label: "JERSEY.FM", href: "https://jersey.fm" },
-          { emoji: "💌", label: "Email", href: "mailto:have@acyfun.com" },
+          { emoji: "💌", label: "EMAIL", href: "mailto:have@acyfun.com" },
         ].map(({ emoji, label, href }) => (
           <a
             key={label}
@@ -191,7 +191,7 @@ const App: React.FC = () => {
               label: "JERSEY.FM",
               href: "https://jersey.fm",
             },
-            { emoji: "💌", label: "Email", href: "mailto:have@acyfun.com" },
+            { emoji: "💌", label: "EMAIL", href: "mailto:have@acyfun.com" },
           ].map(({ emoji, label, href }) => (
             <a
               key={label}
