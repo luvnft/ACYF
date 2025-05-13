@@ -51,12 +51,12 @@ const App: React.FC = () => {
   <h1 className="header-title">✨Have 🌊ACY (Atlantic City) 😎FUN</h1>
   <p className="header-description">
     🎢 AC(Y)ouTube Shorts Tour Guide to the 💯 Best Vibes in City 🎥. Follow us on TikTok
-    <a href="https://tiktok.com/@acyfun" target="_blank" rel="noopener noreferrer" className="tiktok-link"> @ACYFUN</a> 
-     and tap the 🪄 wand to use our 🎙️ ACYFUN Podcast AR effect to be featured.<br/>
+    <a href="https://tiktok.com/@acyfun" target="_blank" rel="noopener noreferrer" className="tiktok-link"> @ACYFUN</a>
+    <br>
     <br/>
   </p>
 
-  {/* TikTok-style Emoji Navigation Row */}
+  {/* eTikTok-style Emoji Navigation Row */}
   <div className="emoji-nav">
     {[
       { emoji: "🗺️", label: "MAP", href: "https://maps.google.com/?q=Atlantic+City" },
