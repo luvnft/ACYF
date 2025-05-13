@@ -1,5 +1,4 @@
-const App: React.FC = () => {
-  return (
+
     <>
       <header className="header">
         <img
