@@ -29,7 +29,7 @@ const ShortsPlayer: React.FC<ShortsPlayerProps> = ({ id }) => (
 );
 
 // 🎥 Shorts IDs by Category
-const redShorts = ["Xrq_TDyABx8", "kLRrHKZOeSI"];
+const redShorts = ["xOVj-JCwRCY"];
 const blueShorts = ["DTO8WF5pjZY"];
 const greenShorts = ["rFSQfMyrgM4"];
 const yellowShorts = ["GsvGKb9ENcM"];
