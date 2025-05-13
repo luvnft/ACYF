@@ -102,7 +102,7 @@ const App: React.FC = () => {
       {/* 🟦 Business Block */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="blue block">🟦</span> Atlantic City, Margate, Ventnor Biz
+          <span role="img" aria-label="blue block">🟦</span> Atlantic City, Margate, Ventnor
         </h2>
         {blueShorts.map((id) => (
           <div key={id} className="short-block">
