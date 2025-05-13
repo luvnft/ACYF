@@ -57,8 +57,8 @@ const App: React.FC = () => {
 {/* 🔗 Emoji Navigation Row */}
 <div className="emoji-nav flex items-center justify-center gap-6 py-4">
   {[
-    { emoji: "🗺️", label: "Map", href: "https://maps.google.com/?q=Atlantic+City" },
-    { emoji: "✈️", label: "Plane", href: "https://www.google.com/flights?q=atlantic+city" },
+    { emoji: "🗺️", label: "Map", href: "https://map.acyfun.com" },
+    { emoji: "✈️", label: "Plane", href: "https://w3w.travel" },
     { emoji: "📻", label: "Radio", href: "https://jersey.fm" },
     { emoji: "💌", label: "Email", href: "mailto:have@acyfun.com" },
   ].map(({ emoji, label, href }) => (
