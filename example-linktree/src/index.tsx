@@ -29,14 +29,15 @@ const ShortsPlayer: React.FC<ShortsPlayerProps> = ({ id }) => (
 );
 
 // 🎥 Shorts IDs by Category
-const redShorts = ["xOVj-JCwRCY"];
-const blueShorts = ["DTO8WF5pjZY"];
-const greenShorts = ["rFSQfMyrgM4"];
-const yellowShorts = ["wrzo663H8OA"];
-const purpleShorts = ["go_4XaGvH0c"];
+const redShorts = ["xOVj-JCwRCY"];        // Events
+const blueShorts = ["DTO8WF5pjZY"];       // Metro ACY
+const greenShorts = ["rFSQfMyrgM4"];      // Real Estate
+const orangeShorts = ["wrzo663H8OA"];     // Foodies
+const yellowShorts = ["gGMB63VU68c"];     // FUNFLUENCER
+const purpleShorts = ["go_4XaGvH0c"];     // Neighborhoods
 
 // 🎥 Pinned Post
-const pinnedShortId = "6BWeiXgG6IA";
+const pinnedShortId = "6BWeiXgG6IA";      // Ads
 
 // 🚀 Root App Component
 const App: React.FC = () => {
@@ -63,40 +64,33 @@ const App: React.FC = () => {
           <br />
           <br />
         </p>
-      </header>
 
-      {/* eTikTok-style Emoji Navigation Row */}
-      <div className="emoji-nav">
-        {[
-          {
-            emoji: "🗺️",
-            label: "MAP",
-            href: "https://maps.google.com/?q=Atlantic+City",
-          },
-          { emoji: "🤳", label: "FUN SOCIAL", href: "https://fun.luvnft.com" },
-          { emoji: "📻", label: "JERSEY.FM", href: "https://jersey.fm" },
-          { emoji: "💌", label: "EMAIL", href: "mailto:have@acyfun.com" },
-        ].map(({ emoji, label, href }) => (
-          <a
-            key={label}
-            href={href}
-            className="emoji-button"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <span className="emoji-icon">{emoji}</span>
-            <span className="emoji-label">{label}</span>
-          </a>
-        ))}
-      </div>
+        {/* TikTok-style Emoji Navigation Row (Header) */}
+        <div className="emoji-nav">
+          {[
+            { emoji: "🗺️", label: "MAP", href: "https://maps.google.com/?q=Atlantic+City" },
+            { emoji: "🤳", label: "FUN SOCIAL", href: "https://fun.luvnft.com" },
+            { emoji: "📻", label: "JERSEY.FM", href: "https://jersey.fm" },
+            { emoji: "💌", label: "EMAIL", href: "mailto:have@acyfun.com" },
+          ].map(({ emoji, label, href }) => (
+            <a
+              key={label}
+              href={href}
+              className="emoji-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="emoji-icon">{emoji}</span>
+              <span className="emoji-label">{label}</span>
+            </a>
+          ))}
+        </div>
+      </header>
 
       {/* 📌 Pinned Post */}
       <div className="shorts-feed pinned">
         <h2>
-          <span role="img" aria-label="pin">
-            📌
-          </span>{" "}
-          ADS
+          <span role="img" aria-label="pin">📌</span> ADS
         </h2>
         <ShortsPlayer id={pinnedShortId} />
       </div>
@@ -104,10 +98,7 @@ const App: React.FC = () => {
       {/* 🟥 Events Block */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="red block">
-            🟥
-          </span>{" "}
-          EVENTS 🎟️
+          <span role="img" aria-label="red block">🟥</span> EVENTS 🎟️
         </h2>
         {redShorts.map((id) => (
           <div key={id} className="short-block">
@@ -119,10 +110,7 @@ const App: React.FC = () => {
       {/* 🟦 Business Block */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="blue block">
-            🟦
-          </span>{" "}
-          METRO ACY 🎰
+          <span role="img" aria-label="blue block">🟦</span> METRO ACY 🎰
         </h2>
         {blueShorts.map((id) => (
           <div key={id} className="short-block">
@@ -134,10 +122,7 @@ const App: React.FC = () => {
       {/* 🟩 Real Estate Shorts */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="green block">
-            🟩
-          </span>{" "}
-          REEL ESTATE 🏡
+          <span role="img" aria-label="green block">🟩</span> REEL ESTATE 🏡
         </h2>
         {greenShorts.map((id) => (
           <div key={id} className="short-block">
@@ -146,15 +131,12 @@ const App: React.FC = () => {
         ))}
       </div>
 
-      {/* 🟨 Food Shorts */}
+      {/* 🟧 Food Shorts */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="yellow block">
-            🟨
-          </span>{" "}
-          FOODIES 🍔
+          <span role="img" aria-label="orange block">🟧</span> FOODIES 🍔
         </h2>
-        {yellowShorts.map((id) => (
+        {orangeShorts.map((id) => (
           <div key={id} className="short-block">
             <ShortsPlayer id={id} />
           </div>
@@ -164,10 +146,7 @@ const App: React.FC = () => {
       {/* 🟪 Artist Shorts */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="purple block">
-            🟪
-          </span>{" "}
-          NEIGHBORHOODS 🎨
+          <span role="img" aria-label="purple block">🟪</span> NEIGHBORHOODS 🎨
         </h2>
         {purpleShorts.map((id) => (
           <div key={id} className="short-block">
@@ -176,21 +155,25 @@ const App: React.FC = () => {
         ))}
       </div>
 
-      {/* 👣 Footer Navigation */}
+      {/* 🟨 FUNFLUENCER Shorts */}
+      <div className="shorts-feed">
+        <h2>
+          <span role="img" aria-label="yellow block">🟨</span> 🌞 FUNFLUENCER
+        </h2>
+        {yellowShorts.map((id) => (
+          <div key={id} className="short-block">
+            <ShortsPlayer id={id} />
+          </div>
+        ))}
+      </div>
+
+      {/* 👣 Footer Navigation (Duplicate) */}
       <footer className="footer">
         <div className="emoji-nav">
           {[
-            {
-              emoji: "🗺️",
-              label: "MAP",
-              href: "https://maps.google.com/?q=Atlantic+City",
-            },
+            { emoji: "🗺️", label: "MAP", href: "https://maps.google.com/?q=Atlantic+City" },
             { emoji: "🤳", label: "FUN SOCIAL", href: "https://fun.luvnft.com" },
-            {
-              emoji: "📻",
-              label: "JERSEY.FM",
-              href: "https://jersey.fm",
-            },
+            { emoji: "📻", label: "JERSEY.FM", href: "https://jersey.fm" },
             { emoji: "💌", label: "EMAIL", href: "mailto:have@acyfun.com" },
           ].map(({ emoji, label, href }) => (
             <a
