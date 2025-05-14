@@ -32,7 +32,7 @@ const ShortsPlayer: React.FC<ShortsPlayerProps> = ({ id }) => (
 const redShorts = ["xOVj-JCwRCY"];
 const blueShorts = ["DTO8WF5pjZY"];
 const greenShorts = ["rFSQfMyrgM4"];
-const yellowShorts = ["GsvGKb9ENcM"];
+const yellowShorts = ["wrzo663H8OA"];
 const purpleShorts = ["go_4XaGvH0c"];
 
 // 🎥 Pinned Post
@@ -42,55 +42,72 @@ const pinnedShortId = "6BWeiXgG6IA";
 const App: React.FC = () => {
   return (
     <>
-<header className="header">
-  <img
-    src="https://i.imgur.com/ebt73cn.jpeg"
-    alt="ACYFUN"
-    className="header-logo"
-  />
-  <h1 className="header-title">✨Have 🌊ACY (Atlantic City) 😎FUN</h1>
-  <p className="header-description">
-    🎢 AC(Y)ouTube Shorts Tour Guide to the 💯 Best Vibes in City 🎥. Follow us on TikTok
-    <a href="https://tiktok.com/@acyfun" target="_blank" rel="noopener noreferrer" className="tiktok-link"> @ACYFUN</a> 
-    and tap the 🪄 wand to use our 🎙️ ACYFUN Podcast AR effect to be featured.<br/>
-    <br/>
-  </p>
-
-  {/* TikTok-style Emoji Navigation Row */}
-  <div className="emoji-nav">
-    {[
-      { emoji: "🗺️", label: "MAP", href: "https://maps.google.com/?q=Atlantic+City" },
-      { emoji: "🤳", label: "SOCIAL", href: "https://fun.luvnft.com" },
-      { emoji: "📻", label: "JERSEY CLUB", href: "https://jersey.fm" },
-      { emoji: "💌", label: "Email", href: "mailto:have@acyfun.com" },
-    ].map(({ emoji, label, href }) => (
-      <a
-        key={label}
-        href={href}
-        className="emoji-button"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span className="emoji-icon">{emoji}</span>
-        <span className="emoji-label">{label}</span>
-      </a>
-    ))}
-  </div>
-
-
-        {/* 📌 Pinned Post */}
-        <div className="shorts-feed pinned">
-          <h2>
-            <span role="img" aria-label="pin">📌</span> Pinned Short Ad
-          </h2>
-          <ShortsPlayer id={pinnedShortId} />
-        </div>
+      <header className="header">
+        <img
+          src="https://i.imgur.com/ebt73cn.jpeg"
+          alt="ACYFUN"
+          className="header-logo"
+        />
+        <h1 className="header-title">✨ Have 🌊 ACY (Atlantic City) 😎 FUN</h1>
+        <p className="header-description">
+          🎢 AC(Y)ouTube Shorts Tour Guide to the 💯 Best Vibes in the City 🎥.
+          Follow us on TikTok&nbsp;
+          <a
+            href="https://tiktok.com/@acyfun"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="tiktok-link"
+          >
+            @ACYFUN
+          </a>
+          <br />
+          <br />
+        </p>
       </header>
+
+      {/* eTikTok-style Emoji Navigation Row */}
+      <div className="emoji-nav">
+        {[
+          {
+            emoji: "🗺️",
+            label: "MAP",
+            href: "https://maps.google.com/?q=Atlantic+City",
+          },
+          { emoji: "🤳", label: "FUN SOCIAL", href: "https://fun.luvnft.com" },
+          { emoji: "📻", label: "JERSEY.FM", href: "https://jersey.fm" },
+          { emoji: "💌", label: "EMAIL", href: "mailto:have@acyfun.com" },
+        ].map(({ emoji, label, href }) => (
+          <a
+            key={label}
+            href={href}
+            className="emoji-button"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="emoji-icon">{emoji}</span>
+            <span className="emoji-label">{label}</span>
+          </a>
+        ))}
+      </div>
+
+      {/* 📌 Pinned Post */}
+      <div className="shorts-feed pinned">
+        <h2>
+          <span role="img" aria-label="pin">
+            📌
+          </span>{" "}
+          ADS
+        </h2>
+        <ShortsPlayer id={pinnedShortId} />
+      </div>
 
       {/* 🟥 Events Block */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="red block">🟥</span> Atlantic City Events
+          <span role="img" aria-label="red block">
+            🟥
+          </span>{" "}
+          EVENTS 🎟️
         </h2>
         {redShorts.map((id) => (
           <div key={id} className="short-block">
@@ -102,7 +119,10 @@ const App: React.FC = () => {
       {/* 🟦 Business Block */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="blue block">🟦</span> Atlantic City, Margate, Ventnor
+          <span role="img" aria-label="blue block">
+            🟦
+          </span>{" "}
+          METRO ACY 🎰
         </h2>
         {blueShorts.map((id) => (
           <div key={id} className="short-block">
@@ -114,7 +134,10 @@ const App: React.FC = () => {
       {/* 🟩 Real Estate Shorts */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="green block">🟩</span> Real Estate 🏡
+          <span role="img" aria-label="green block">
+            🟩
+          </span>{" "}
+          REEL ESTATE 🏡
         </h2>
         {greenShorts.map((id) => (
           <div key={id} className="short-block">
@@ -126,7 +149,10 @@ const App: React.FC = () => {
       {/* 🟨 Food Shorts */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="yellow block">🟨</span> Food & Dining 🍔
+          <span role="img" aria-label="yellow block">
+            🟨
+          </span>{" "}
+          FOODIES 🍔
         </h2>
         {yellowShorts.map((id) => (
           <div key={id} className="short-block">
@@ -138,7 +164,10 @@ const App: React.FC = () => {
       {/* 🟪 Artist Shorts */}
       <div className="shorts-feed">
         <h2>
-          <span role="img" aria-label="purple block">🟪</span> Neighborhoods 🎨
+          <span role="img" aria-label="purple block">
+            🟪
+          </span>{" "}
+          NEIGHBORHOODS 🎨
         </h2>
         {purpleShorts.map((id) => (
           <div key={id} className="short-block">
@@ -146,6 +175,37 @@ const App: React.FC = () => {
           </div>
         ))}
       </div>
+
+      {/* 👣 Footer Navigation */}
+      <footer className="footer">
+        <div className="emoji-nav">
+          {[
+            {
+              emoji: "🗺️",
+              label: "MAP",
+              href: "https://maps.google.com/?q=Atlantic+City",
+            },
+            { emoji: "🤳", label: "FUN SOCIAL", href: "https://fun.luvnft.com" },
+            {
+              emoji: "📻",
+              label: "JERSEY.FM",
+              href: "https://jersey.fm",
+            },
+            { emoji: "💌", label: "EMAIL", href: "mailto:have@acyfun.com" },
+          ].map(({ emoji, label, href }) => (
+            <a
+              key={label}
+              href={href}
+              className="emoji-button"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="emoji-icon">{emoji}</span>
+              <span className="emoji-label">{label}</span>
+            </a>
+          ))}
+        </div>
+      </footer>
     </>
   );
 };
