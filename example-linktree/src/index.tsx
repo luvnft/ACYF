@@ -69,8 +69,8 @@ const App: React.FC = () => {
         <div className="emoji-nav">
           {[
             { emoji: "🗺️", label: "MAP", href: "https://maps.google.com/?q=Atlantic+City" },
-            { emoji: "🤳", label: "FUN SOCIAL", href: "https://fun.luvnft.com" },
-            { emoji: "📻", label: "JERSEY.FM", href: "https://jersey.fm" },
+            { emoji: "✈️", label: "AI FLIGHTS", href: "https://w3w.travel" },
+            { emoji: "📻", label: "JERSEY CLUB", href: "https://jersey.fm" },
             { emoji: "💌", label: "EMAIL", href: "mailto:have@acyfun.com" },
           ].map(({ emoji, label, href }) => (
             <a
@@ -172,8 +172,8 @@ const App: React.FC = () => {
         <div className="emoji-nav">
           {[
             { emoji: "🗺️", label: "MAP", href: "https://maps.google.com/?q=Atlantic+City" },
-            { emoji: "🤳", label: "FUN SOCIAL", href: "https://fun.luvnft.com" },
-            { emoji: "📻", label: "JERSEY.FM", href: "https://jersey.fm" },
+            { emoji: "✈️", label: "AI FLIGHTS", href: "https://w3w.travel" },
+            { emoji: "📻", label: "JERSEY CLUB", href: "https://jersey.fm" },
             { emoji: "💌", label: "EMAIL", href: "mailto:have@acyfun.com" },
           ].map(({ emoji, label, href }) => (
             <a
