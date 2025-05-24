@@ -1,36 +1,18 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import "./css/normalize.css";
 
-// ===================== 📸 TYPES & INTERFACES =====================
+// ===================== 📸 TYPES & COMPONENTS =====================
 interface BoothPlayerProps {
   id: string;
   isSponsored?: boolean;
-  sponsorData?: {
-    name: string;
-    logo: string;
-    cta: string;
-  };
 }
 
-interface PricingTier {
-  name: string;
-  price: string;
-  features: string[];
-  cta: string;
-  popular?: boolean;
-}
-
-// ===================== 🎬 COMPONENTS =====================
-const BoothPlayer: React.FC<BoothPlayerProps> = ({ id, isSponsored, sponsorData }) => (
+/**
+ * LUMEE BOOTH Player Component (9:16 Aspect Ratio)
+ */
+const BoothPlayer: React.FC<BoothPlayerProps> = ({ id, isSponsored }) => (
   <div className={`booth-container ${isSponsored ? 'sponsored' : ''}`}>
-    {isSponsored && sponsorData && (
-      <div className="sponsor-overlay">
-        <img src={sponsorData.logo} alt={sponsorData.name} className="sponsor-logo" />
-        <button className="sponsor-cta">{sponsorData.cta}</button>
-      </div>
-    )}
-    
     <iframe
       width="100%"
       height="100%"
@@ -39,409 +21,187 @@ const BoothPlayer: React.FC<BoothPlayerProps> = ({ id, isSponsored, sponsorData 
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen
       className="booth-iframe"
-      title={`Lumee Booth Capture ${id}`}
+      title={`Lumee Booth Experience ${id}`}
       loading="lazy"
       referrerPolicy="strict-origin-when-cross-origin"
-      aria-label="Video player"
+      aria-label="Booth video player"
     />
-    
     <div className="action-buttons">
-      <button 
-        className="cta-button instagram"
-        aria-label="Share on Instagram"
-      >
-        📸 INSTA
-      </button>
-      <button 
-        className="cta-button tiktok"
-        aria-label="Share on TikTok"
-      >
-        🎵 TIKTOK
-      </button>
-      <button 
-        className="cta-button youtube-promo"
-        onClick={() => window.open('/upsell?type=yt_ads&video=' + id)}
-        aria-label="Boost this reel"
-      >
-        🚀 BOOST THIS REEL
-      </button>
+      <button className="cta-button instagram">📸 INSTA BOOTH</button>
+      <button className="cta-button tiktok">🎵 TIKTOK BOOTH</button>
     </div>
-    
     {isSponsored && (
       <div className="sponsor-badge" aria-label="Sponsored content">
-        <span>SPONSORED CONTENT</span>
+        💎 SPONSORED
       </div>
     )}
   </div>
 );
 
-const PricingCard: React.FC<{ tier: PricingTier }> = ({ tier }) => (
-  <div className={`pricing-card ${tier.popular ? 'popular' : ''}`}>
-    {tier.popular && <div className="popular-badge">MOST POPULAR</div>}
-    <h3>{tier.name}</h3>
-    <p className="price">{tier.price}</p>
-    <ul>
-      {tier.features.map((feat, index) => (
-        <li key={index}>✓ {feat}</li>
-      ))}
-    </ul>
-    <a 
-      href={tier.name.includes("Enterprise") 
-        ? "mailto:sales@lumeebooth.com" 
-        : "https://book.lumeebooth.com"}
-      className="cta-button"
-      aria-label={`Select ${tier.name} package`}
-    >
-      {tier.cta}
-    </a>
-  </div>
-);
-
-// ===================== 🎥 CONTENT CONFIG =====================
+// ===================== 🎥 BOOTH CONTENT =====================
 const BOOTH_CATEGORIES = {
-  FEATURED: {
+  // 💎 Premium Experiences
+  PREMIUM: {
     id: "6BWeiXgG6IA",
-    isSponsored: true,
-    sponsorData: {
-      name: "Red Bull",
-      logo: "https://i.imgur.com/redbull-logo.png",
-      cta: "Energy for your event!"
-    }
+    isSponsored: true
   },
-  EVENTS: [
-    { id: "xOVj-JCwRCY", canPromote: true },
-    { id: "dQw4w9WgXcQ", canPromote: false }
-  ],
-  WEDDINGS: [
-    { id: "wedding1", canPromote: true },
-    { id: "wedding2", canPromote: true }
-  ],
-  CORPORATE: [
-    { id: "corporate1", canPromote: true },
-    { id: "corporate2", canPromote: false }
-  ]
+  // 🎉 Party Booths
+  PARTY: ["xOVj-JCwRCY", "dQw4w9WgXcQ"],
+  // 💍 Wedding Booths
+  WEDDING: ["DTO8WF5pjZY", "9bZkp7q19f0"],
+  // 🏢 Corporate Booths
+  CORPORATE: ["rFSQfMyrgM4", "JGwWNGJdvx8"],
+  // 🛍️ Brand Activations
+  BRAND: ["go_4XaGvH0c", "kJQP7kiw5Fk"],
+  // 🎨 Creative Booths
+  CREATIVE: ["gGMB63VU68c", "RgKAFK5djSk"]
 };
-
-const PRICING_TIERS: PricingTier[] = [
-  {
-    name: "🟢 ESSENTIAL REEL",
-    price: "$1,299",
-    features: [
-      "4-hour event coverage",
-      "Standard AR filters",
-      "Instant social sharing",
-      "Basic analytics"
-    ],
-    cta: "Book Now"
-  },
-  {
-    name: "🔵 PRO REEL PACKAGE",
-    price: "$3,499",
-    features: [
-      "8-hour coverage + attendant",
-      "Custom AR filter (1 design)",
-      "YouTube ad integration",
-      "Performance analytics",
-      "Priority support"
-    ],
-    cta: "Get Started",
-    popular: true
-  },
-  {
-    name: "🟣 ENTERPRISE SOLUTION",
-    price: "Custom",
-    features: [
-      "Multi-day/multi-location",
-      "3+ premium AR filters",
-      "Dedicated YouTube campaign",
-      "CRM integration",
-      "Executive reports"
-    ],
-    cta: "Contact Sales"
-  }
-];
 
 // ===================== 🚀 APP COMPONENT =====================
 const App: React.FC = () => {
-  const [showUpsell, setShowUpsell] = useState(false);
-  const [selectedVideo, setSelectedVideo] = useState("");
-
-  const NAV_ITEMS = [
-    { emoji: "📅", label: "BOOK NOW", href: "https://book.lumeebooth.com" },
-    { emoji: "💎", label: "PRICING", href: "#pricing" },
-    { emoji: "🛠️", label: "AR FILTERS", href: "https://filters.lumeebooth.com" },
-    { emoji: "📈", label: "ANALYTICS", href: "https://data.lumeebooth.com" }
-  ];
-
-  const handlePromoteClick = (videoId: string) => {
-    setSelectedVideo(videoId);
-    setShowUpsell(true);
-  };
-
   return (
     <>
+      {/* ===================== HEADER ===================== */}
       <header className="header">
-        <div className="header-top">
-          <img
-            src="https://i.imgur.com/JK3l7Qq.png"
-            alt="Lumee Booth REEL"
-            className="header-logo"
-          />
-          <nav className="premium-nav" aria-label="Main navigation">
-            <a href="#pricing" className="premium-link">For Businesses</a>
-            <a href="#influencers" className="premium-link">For Influencers</a>
-            <a href="mailto:partners@lumeebooth.com" className="partner-cta">
-              Become a Partner
-            </a>
-          </nav>
-        </div>
-        
-        <h1 className="header-title">✨ LUMEE BOOTH <span className="highlight">REEL</span></h1>
+        <img
+          src="https://i.imgur.com/lumee-booth-logo.png"
+          alt="LUMEE BOOTH"
+          className="header-logo"
+        />
+        <h1 className="header-title">✨ LUMEE BOOTH 📸</h1>
         <p className="header-description">
-          Premium <strong>sponsored content platform</strong> with built-in 
-          <strong> YouTube ad integration</strong> and <strong>branded AR experiences</strong>.
+          The ultimate <strong>interactive photo experience</strong> with 
+          <strong> viral AR filters</strong> and <strong>instant social sharing</strong>.
           <br />
-          <span className="tagline">Your event. Our viral engine.</span>
+          Book your booth today and join the #LumeeBooth movement!
         </p>
 
-        <div className="emoji-nav" role="navigation" aria-label="Quick links">
-          {NAV_ITEMS.map((item) => (
+        {/* Booth Navigation */}
+        <div className="emoji-nav">
+          {[
+            { emoji: "📅", label: "BOOK NOW", href: "https://book.lumeebooth.com" },
+            { emoji: "💎", label: "PACKAGES", href: "#pricing" },
+            { emoji: "🖼️", label: "GALLERY", href: "https://gallery.lumeebooth.com" },
+            { emoji: "📲", label: "CONTACT", href: "mailto:hello@lumeebooth.com" }
+          ].map(({ emoji, label, href }) => (
             <a
-              key={item.label}
-              href={item.href}
+              key={label}
+              href={href}
               className="emoji-button"
-              target={item.href.startsWith('http') ? '_blank' : '_self'}
+              target="_blank"
               rel="noopener noreferrer"
-              aria-label={item.label}
+              aria-label={label}
             >
-              <span className="emoji-icon">{item.emoji}</span>
-              <span className="emoji-label">{item.label}</span>
+              <span className="emoji-icon">{emoji}</span>
+              <span className="emoji-label">{label}</span>
             </a>
           ))}
         </div>
       </header>
 
+      {/* ===================== BOOTH FEED ===================== */}
       <main>
+        {/* 💎 Premium Showcase */}
         <div className="booth-feed featured">
           <h2>
-            <span role="img" aria-label="trophy">🏆</span> SPONSORED SHOWCASE
+            <span role="img" aria-label="gem">💎</span> PREMIUM EXPERIENCE
           </h2>
-          <BoothPlayer 
-            id={BOOTH_CATEGORIES.FEATURED.id}
-            isSponsored={BOOTH_CATEGORIES.FEATURED.isSponsored}
-            sponsorData={BOOTH_CATEGORIES.FEATURED.sponsorData}
-          />
-          <div className="sponsor-disclaimer">
-            Paid partnership with {BOOTH_CATEGORIES.FEATURED.sponsorData.name}
-          </div>
+          <BoothPlayer id={BOOTH_CATEGORIES.PREMIUM.id} isSponsored={true} />
         </div>
 
-        <section id="pricing" className="pricing-section" aria-labelledby="pricing-heading">
-          <h2 id="pricing-heading">💰 MONETIZE YOUR CONTENT</h2>
-          <div className="pricing-grid">
-            {PRICING_TIERS.map((tier) => (
-              <PricingCard key={tier.name} tier={tier} />
-            ))}
-          </div>
-          <div className="enterprise-cta">
-            <p>Need custom solutions for large campaigns?</p>
-            <a 
-              href="mailto:enterprise@lumeebooth.com" 
-              className="enterprise-button"
-              aria-label="Contact enterprise team"
-            >
-              TALK TO OUR TEAM
-            </a>
-          </div>
-        </section>
+        {/* 🎉 Party Booths */}
+        <div className="booth-feed">
+          <h2>
+            <span role="img" aria-label="party">🎉</span> PARTY BOOTHS
+          </h2>
+          {BOOTH_CATEGORIES.PARTY.map(id => (
+            <div key={id} className="booth-block">
+              <BoothPlayer id={id} />
+            </div>
+          ))}
+        </div>
 
-        <section className="branded-section" aria-labelledby="earn-heading">
-          <h2 id="earn-heading">🤑 EARN WITH YOUR CONTENT</h2>
-          <div className="earn-options">
-            <div className="earn-card">
-              <h3>YouTube Ad Revenue Share</h3>
-              <p>Get 30% of ad revenue from promoted reels</p>
-              <button 
-                className="learn-more"
-                aria-label="Learn about YouTube revenue sharing"
-              >
-                LEARN MORE
-              </button>
+        {/* 💍 Wedding Booths */}
+        <div className="booth-feed">
+          <h2>
+            <span role="img" aria-label="wedding">💍</span> WEDDING BOOTHS
+          </h2>
+          {BOOTH_CATEGORIES.WEDDING.map(id => (
+            <div key={id} className="booth-block">
+              <BoothPlayer id={id} />
             </div>
-            <div className="earn-card">
-              <h3>Sponsored AR Filters</h3>
-              <p>Earn $500+ per branded filter activation</p>
-              <button 
-                className="learn-more"
-                aria-label="Learn about sponsored AR filters"
-              >
-                LEARN MORE
-              </button>
-            </div>
-            <div className="earn-card">
-              <h3>Affiliate Commissions</h3>
-              <p>5-15% commission on event bookings</p>
-              <button 
-                className="learn-more"
-                aria-label="Learn about affiliate program"
-              >
-                LEARN MORE
-              </button>
-            </div>
-          </div>
-        </section>
+          ))}
+        </div>
 
-        {Object.entries(BOOTH_CATEGORIES).map(([category, videos]) => (
-          category !== 'FEATURED' && (
-            <div key={category} className="booth-feed" aria-labelledby={`${category}-heading`}>
-              <h2 id={`${category}-heading`}>
-                <span role="img" aria-label={category.toLowerCase()}>
-                  {category === 'EVENTS' ? '🔴' : 
-                   category === 'WEDDINGS' ? '🔵' : 
-                   category === 'CORPORATE' ? '🟢' : '🟣'}
-                </span> 
-                {category.replace('_', ' ')}
-              </h2>
-              {Array.isArray(videos) && videos.map((video) => (
-                <div key={video.id} className="booth-block">
-                  <BoothPlayer id={video.id} />
-                  {video.canPromote && (
-                    <button 
-                      className="promote-cta"
-                      onClick={() => handlePromoteClick(video.id)}
-                      aria-label={`Monetize video ${video.id}`}
-                    >
-                      💰 MONETIZE THIS REEL
-                    </button>
-                  )}
-                </div>
-              ))}
+        {/* 🏢 Corporate Booths */}
+        <div className="booth-feed">
+          <h2>
+            <span role="img" aria-label="office">🏢</span> CORPORATE BOOTHS
+          </h2>
+          {BOOTH_CATEGORIES.CORPORATE.map(id => (
+            <div key={id} className="booth-block">
+              <BoothPlayer id={id} />
             </div>
-          )
-        ))}
+          ))}
+        </div>
+
+        {/* 🛍️ Brand Activations */}
+        <div className="booth-feed">
+          <h2>
+            <span role="img" aria-label="shopping">🛍️</span> BRAND ACTIVATIONS
+          </h2>
+          {BOOTH_CATEGORIES.BRAND.map(id => (
+            <div key={id} className="booth-block">
+              <BoothPlayer id={id} />
+            </div>
+          ))}
+        </div>
+
+        {/* 🎨 Creative Booths */}
+        <div className="booth-feed">
+          <h2>
+            <span role="img" aria-label="art">🎨</span> CREATIVE BOOTHS
+          </h2>
+          {BOOTH_CATEGORIES.CREATIVE.map(id => (
+            <div key={id} className="booth-block">
+              <BoothPlayer id={id} />
+            </div>
+          ))}
+        </div>
       </main>
 
+      {/* ===================== FOOTER ===================== */}
       <footer className="footer">
-        <div className="footer-grid">
-          <div className="footer-col">
-            <h3>Services</h3>
-            <a href="#pricing">Paid Reels</a>
-            <a href="/ar-filters">AR Filter Store</a>
-            <a href="/influencers">Influencer Network</a>
-          </div>
-          <div className="footer-col">
-            <h3>Monetization</h3>
-            <a href="/ad-revenue">Ad Revenue</a>
-            <a href="/sponsorships">Sponsorships</a>
-            <a href="/affiliate">Affiliate Program</a>
-          </div>
-          <div className="footer-col">
-            <h3>Company</h3>
-            <a href="/case-studies">Case Studies</a>
-            <a href="/testimonials">Testimonials</a>
-            <a href="/press">Press Kit</a>
-          </div>
-          <div className="footer-cta">
-            <h3>READY TO GO VIRAL?</h3>
+        <div className="footer-cta">
+          <h3>READY TO CREATE MAGIC?</h3>
+          <a href="mailto:bookings@lumeebooth.com" className="cta-button">
+            📧 BOOK YOUR BOOTH
+          </a>
+        </div>
+        <div className="social-links">
+          {[
+            { platform: "Instagram", url: "https://instagram.com/lumeebooth" },
+            { platform: "TikTok", url: "https://tiktok.com/@lumeebooth" },
+            { platform: "YouTube", url: "https://youtube.com/lumeebooth" }
+          ].map(social => (
             <a 
-              href="mailto:sales@lumeebooth.com" 
-              className="cta-button"
-              aria-label="Contact sales"
+              key={social.platform} 
+              href={social.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Follow on ${social.platform}`}
             >
-              📧 GET STARTED
+              {social.platform}
             </a>
-            <div className="social-links">
-              {['Instagram', 'TikTok', 'YouTube'].map((platform) => (
-                <a 
-                  key={platform} 
-                  href={`https://${platform.toLowerCase()}.com/lumeebooth`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`Follow on ${platform}`}
-                >
-                  {platform}
-                </a>
-              ))}
-            </div>
-          </div>
+          ))}
         </div>
-        <div className="legal-footer">
-          <p>© {new Date().getFullYear()} Lumee Booth REEL | Premium Content Platform</p>
-          <div className="legal-links">
-            <a href="/terms">Terms</a>
-            <a href="/privacy">Privacy</a>
-            <a href="/cookies">Cookie Policy</a>
-          </div>
-        </div>
+        <p className="copyright">© {new Date().getFullYear()} LUMEE BOOTH | Premium Photo Experiences</p>
       </footer>
-
-      {showUpsell && (
-        <div className="upsell-modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
-          <div className="modal-content">
-            <button 
-              className="close-modal" 
-              onClick={() => setShowUpsell(false)}
-              aria-label="Close modal"
-            >
-              ×
-            </button>
-            <h2 id="modal-heading">MONETIZE THIS REEL</h2>
-            <div className="upsell-options">
-              <div className="upsell-card">
-                <h3>Basic Promotion</h3>
-                <p>$299</p>
-                <ul>
-                  <li>YouTube ad campaign</li>
-                  <li>7-day promotion</li>
-                  <li>Basic analytics</li>
-                </ul>
-                <button 
-                  className="buy-now"
-                  aria-label="Select Basic Promotion"
-                >
-                  SELECT
-                </button>
-              </div>
-              <div className="upsell-card featured">
-                <div className="best-value">BEST VALUE</div>
-                <h3>Viral Package</h3>
-                <p>$799</p>
-                <ul>
-                  <li>Multi-platform promotion</li>
-                  <li>30-day campaign</li>
-                  <li>Advanced analytics</li>
-                  <li>Sponsor matching</li>
-                </ul>
-                <button 
-                  className="buy-now"
-                  aria-label="Select Viral Package"
-                >
-                  SELECT
-                </button>
-              </div>
-              <div className="upsell-card">
-                <h3>Enterprise</h3>
-                <p>Custom</p>
-                <ul>
-                  <li>Dedicated manager</li>
-                  <li>White-label options</li>
-                  <li>CRM integration</li>
-                </ul>
-                <button 
-                  className="buy-now"
-                  aria-label="Contact about Enterprise package"
-                >
-                  CONTACT US
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </>
   );
 };
 
+// ===================== 🛠️ RENDER =====================
 const rootElement = document.getElementById("root");
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
