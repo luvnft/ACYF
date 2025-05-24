@@ -22,9 +22,6 @@ interface PricingTier {
 }
 
 // ===================== 🎬 COMPONENTS =====================
-/**
- * Premium Booth Player with Sponsorship Integration
- */
 const BoothPlayer: React.FC<BoothPlayerProps> = ({ id, isSponsored, sponsorData }) => (
   <div className={`booth-container ${isSponsored ? 'sponsored' : ''}`}>
     {isSponsored && sponsorData && (
@@ -45,30 +42,39 @@ const BoothPlayer: React.FC<BoothPlayerProps> = ({ id, isSponsored, sponsorData 
       title={`Lumee Booth Capture ${id}`}
       loading="lazy"
       referrerPolicy="strict-origin-when-cross-origin"
+      aria-label="Video player"
     />
     
     <div className="action-buttons">
-      <button className="cta-button instagram">📸 INSTA</button>
-      <button className="cta-button tiktok">🎵 TIKTOK</button>
+      <button 
+        className="cta-button instagram"
+        aria-label="Share on Instagram"
+      >
+        📸 INSTA
+      </button>
+      <button 
+        className="cta-button tiktok"
+        aria-label="Share on TikTok"
+      >
+        🎵 TIKTOK
+      </button>
       <button 
         className="cta-button youtube-promo"
         onClick={() => window.open('/upsell?type=yt_ads&video=' + id)}
+        aria-label="Boost this reel"
       >
         🚀 BOOST THIS REEL
       </button>
     </div>
     
     {isSponsored && (
-      <div className="sponsor-badge">
+      <div className="sponsor-badge" aria-label="Sponsored content">
         <span>SPONSORED CONTENT</span>
       </div>
     )}
   </div>
 );
 
-/**
- * Pricing Tier Component
- */
 const PricingCard: React.FC<{ tier: PricingTier }> = ({ tier }) => (
   <div className={`pricing-card ${tier.popular ? 'popular' : ''}`}>
     {tier.popular && <div className="popular-badge">MOST POPULAR</div>}
@@ -84,6 +90,7 @@ const PricingCard: React.FC<{ tier: PricingTier }> = ({ tier }) => (
         ? "mailto:sales@lumeebooth.com" 
         : "https://book.lumeebooth.com"}
       className="cta-button"
+      aria-label={`Select ${tier.name} package`}
     >
       {tier.cta}
     </a>
@@ -105,7 +112,14 @@ const BOOTH_CATEGORIES = {
     { id: "xOVj-JCwRCY", canPromote: true },
     { id: "dQw4w9WgXcQ", canPromote: false }
   ],
-  // ... other categories with same structure
+  WEDDINGS: [
+    { id: "wedding1", canPromote: true },
+    { id: "wedding2", canPromote: true }
+  ],
+  CORPORATE: [
+    { id: "corporate1", canPromote: true },
+    { id: "corporate2", canPromote: false }
+  ]
 };
 
 const PRICING_TIERS: PricingTier[] = [
@@ -166,7 +180,6 @@ const App: React.FC = () => {
 
   return (
     <>
-      {/* ===================== HEADER ===================== */}
       <header className="header">
         <div className="header-top">
           <img
@@ -174,7 +187,7 @@ const App: React.FC = () => {
             alt="Lumee Booth REEL"
             className="header-logo"
           />
-          <nav className="premium-nav">
+          <nav className="premium-nav" aria-label="Main navigation">
             <a href="#pricing" className="premium-link">For Businesses</a>
             <a href="#influencers" className="premium-link">For Influencers</a>
             <a href="mailto:partners@lumeebooth.com" className="partner-cta">
@@ -191,7 +204,7 @@ const App: React.FC = () => {
           <span className="tagline">Your event. Our viral engine.</span>
         </p>
 
-        <div className="emoji-nav">
+        <div className="emoji-nav" role="navigation" aria-label="Quick links">
           {NAV_ITEMS.map((item) => (
             <a
               key={item.label}
@@ -199,6 +212,7 @@ const App: React.FC = () => {
               className="emoji-button"
               target={item.href.startsWith('http') ? '_blank' : '_self'}
               rel="noopener noreferrer"
+              aria-label={item.label}
             >
               <span className="emoji-icon">{item.emoji}</span>
               <span className="emoji-label">{item.label}</span>
@@ -207,9 +221,7 @@ const App: React.FC = () => {
         </div>
       </header>
 
-      {/* ===================== MAIN CONTENT ===================== */}
       <main>
-        {/* Featured Sponsor Showcase */}
         <div className="booth-feed featured">
           <h2>
             <span role="img" aria-label="trophy">🏆</span> SPONSORED SHOWCASE
@@ -224,9 +236,8 @@ const App: React.FC = () => {
           </div>
         </div>
 
-        {/* Pricing Section */}
-        <section id="pricing" className="pricing-section">
-          <h2>💰 MONETIZE YOUR CONTENT</h2>
+        <section id="pricing" className="pricing-section" aria-labelledby="pricing-heading">
+          <h2 id="pricing-heading">💰 MONETIZE YOUR CONTENT</h2>
           <div className="pricing-grid">
             {PRICING_TIERS.map((tier) => (
               <PricingCard key={tier.name} tier={tier} />
@@ -234,39 +245,56 @@ const App: React.FC = () => {
           </div>
           <div className="enterprise-cta">
             <p>Need custom solutions for large campaigns?</p>
-            <a href="mailto:enterprise@lumeebooth.com" className="enterprise-button">
+            <a 
+              href="mailto:enterprise@lumeebooth.com" 
+              className="enterprise-button"
+              aria-label="Contact enterprise team"
+            >
               TALK TO OUR TEAM
             </a>
           </div>
         </section>
 
-        {/* Branded Content Examples */}
-        <section className="branded-section">
-          <h2>🤑 EARN WITH YOUR CONTENT</h2>
+        <section className="branded-section" aria-labelledby="earn-heading">
+          <h2 id="earn-heading">🤑 EARN WITH YOUR CONTENT</h2>
           <div className="earn-options">
             <div className="earn-card">
               <h3>YouTube Ad Revenue Share</h3>
               <p>Get 30% of ad revenue from promoted reels</p>
-              <button className="learn-more">LEARN MORE</button>
+              <button 
+                className="learn-more"
+                aria-label="Learn about YouTube revenue sharing"
+              >
+                LEARN MORE
+              </button>
             </div>
             <div className="earn-card">
               <h3>Sponsored AR Filters</h3>
               <p>Earn $500+ per branded filter activation</p>
-              <button className="learn-more">LEARN MORE</button>
+              <button 
+                className="learn-more"
+                aria-label="Learn about sponsored AR filters"
+              >
+                LEARN MORE
+              </button>
             </div>
             <div className="earn-card">
               <h3>Affiliate Commissions</h3>
               <p>5-15% commission on event bookings</p>
-              <button className="learn-more">LEARN MORE</button>
+              <button 
+                className="learn-more"
+                aria-label="Learn about affiliate program"
+              >
+                LEARN MORE
+              </button>
             </div>
           </div>
         </section>
 
-        {/* Standard Content Feed */}
         {Object.entries(BOOTH_CATEGORIES).map(([category, videos]) => (
           category !== 'FEATURED' && (
-            <div key={category} className="booth-feed">
-              <h2>
+            <div key={category} className="booth-feed" aria-labelledby={`${category}-heading`}>
+              <h2 id={`${category}-heading`}>
                 <span role="img" aria-label={category.toLowerCase()}>
                   {category === 'EVENTS' ? '🔴' : 
                    category === 'WEDDINGS' ? '🔵' : 
@@ -281,6 +309,7 @@ const App: React.FC = () => {
                     <button 
                       className="promote-cta"
                       onClick={() => handlePromoteClick(video.id)}
+                      aria-label={`Monetize video ${video.id}`}
                     >
                       💰 MONETIZE THIS REEL
                     </button>
@@ -292,30 +321,33 @@ const App: React.FC = () => {
         ))}
       </main>
 
-      {/* ===================== FOOTER ===================== */}
       <footer className="footer">
         <div className="footer-grid">
           <div className="footer-col">
             <h3>Services</h3>
             <a href="#pricing">Paid Reels</a>
-            <a href="#">AR Filter Store</a>
-            <a href="#">Influencer Network</a>
+            <a href="/ar-filters">AR Filter Store</a>
+            <a href="/influencers">Influencer Network</a>
           </div>
           <div className="footer-col">
             <h3>Monetization</h3>
-            <a href="#">Ad Revenue</a>
-            <a href="#">Sponsorships</a>
-            <a href="#">Affiliate Program</a>
+            <a href="/ad-revenue">Ad Revenue</a>
+            <a href="/sponsorships">Sponsorships</a>
+            <a href="/affiliate">Affiliate Program</a>
           </div>
           <div className="footer-col">
             <h3>Company</h3>
-            <a href="#">Case Studies</a>
-            <a href="#">Testimonials</a>
-            <a href="#">Press Kit</a>
+            <a href="/case-studies">Case Studies</a>
+            <a href="/testimonials">Testimonials</a>
+            <a href="/press">Press Kit</a>
           </div>
           <div className="footer-cta">
             <h3>READY TO GO VIRAL?</h3>
-            <a href="mailto:sales@lumeebooth.com" className="cta-button">
+            <a 
+              href="mailto:sales@lumeebooth.com" 
+              className="cta-button"
+              aria-label="Contact sales"
+            >
               📧 GET STARTED
             </a>
             <div className="social-links">
@@ -325,6 +357,7 @@ const App: React.FC = () => {
                   href={`https://${platform.toLowerCase()}.com/lumeebooth`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label={`Follow on ${platform}`}
                 >
                   {platform}
                 </a>
@@ -335,21 +368,24 @@ const App: React.FC = () => {
         <div className="legal-footer">
           <p>© {new Date().getFullYear()} Lumee Booth REEL | Premium Content Platform</p>
           <div className="legal-links">
-            <a href="#">Terms</a>
-            <a href="#">Privacy</a>
-            <a href="#">Cookie Policy</a>
+            <a href="/terms">Terms</a>
+            <a href="/privacy">Privacy</a>
+            <a href="/cookies">Cookie Policy</a>
           </div>
         </div>
       </footer>
 
-      {/* Upsell Modal */}
       {showUpsell && (
-        <div className="upsell-modal">
+        <div className="upsell-modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
           <div className="modal-content">
-            <button className="close-modal" onClick={() => setShowUpsell(false)}>
+            <button 
+              className="close-modal" 
+              onClick={() => setShowUpsell(false)}
+              aria-label="Close modal"
+            >
               ×
             </button>
-            <h2>MONETIZE THIS REEL</h2>
+            <h2 id="modal-heading">MONETIZE THIS REEL</h2>
             <div className="upsell-options">
               <div className="upsell-card">
                 <h3>Basic Promotion</h3>
@@ -359,7 +395,12 @@ const App: React.FC = () => {
                   <li>7-day promotion</li>
                   <li>Basic analytics</li>
                 </ul>
-                <button className="buy-now">SELECT</button>
+                <button 
+                  className="buy-now"
+                  aria-label="Select Basic Promotion"
+                >
+                  SELECT
+                </button>
               </div>
               <div className="upsell-card featured">
                 <div className="best-value">BEST VALUE</div>
@@ -371,7 +412,12 @@ const App: React.FC = () => {
                   <li>Advanced analytics</li>
                   <li>Sponsor matching</li>
                 </ul>
-                <button className="buy-now">SELECT</button>
+                <button 
+                  className="buy-now"
+                  aria-label="Select Viral Package"
+                >
+                  SELECT
+                </button>
               </div>
               <div className="upsell-card">
                 <h3>Enterprise</h3>
@@ -381,7 +427,12 @@ const App: React.FC = () => {
                   <li>White-label options</li>
                   <li>CRM integration</li>
                 </ul>
-                <button className="buy-now">CONTACT US</button>
+                <button 
+                  className="buy-now"
+                  aria-label="Contact about Enterprise package"
+                >
+                  CONTACT US
+                </button>
               </div>
             </div>
           </div>
@@ -391,7 +442,6 @@ const App: React.FC = () => {
   );
 };
 
-// ===================== 🛠️ RENDER =====================
 const rootElement = document.getElementById("root");
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
