@@ -40,13 +40,6 @@ const REEL_CATEGORIES = [
     description: "Beach/travel-themed filters"
   },
   { 
-    emoji: "🟠", 
-    label: "LIVESTREAM", 
-    color: COLORS.joyfulOrange,
-    ids: ["gGMB63VU68c", "RgKAFK5djSk", "wrzo663H8OA"],
-    description: "Effects optimized for live video"
-  },
-  { 
     emoji: "🎉", 
     label: "ALL EFFECTS", 
     color: COLORS.skyBlue,
@@ -61,15 +54,8 @@ const REEL_CATEGORIES = [
     description: "Makeup/glam AR enhancements"
   },
   { 
-    emoji: "🤳", 
-    label: "SELFIE", 
-    color: COLORS.pastelYellow,
-    ids: ["T9U5FbQj7xN", "P3O7Qr2St1Y", "L2K8Hp9Qr5W"],
-    description: "Face-altering portrait effects"
-  },
-  { 
-    emoji: "🔄", 
-    label: "TRANSFORM", 
+    emoji: "🤖", 
+    label: "AI", 
     color: COLORS.lilacPurple,
     ids: ["xOVj-JCwRCY", "dQw4w9WgXcQ", "6BWeiXgG6IA"],
     description: "Morphing/body distortion effects"
@@ -83,61 +69,138 @@ interface ReelPlayerProps {
 }
 
 // ================ 🖼️ REEL COMPONENT ================
-const ReelPlayer = ({ id, borderColor }: ReelPlayerProps) => (
-  <div className="reel-container" style={{ borderColor }}>
-    <div className="video-wrapper">
-      <iframe
-        src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&playsinline=1`}
-        className="reel-iframe"
-        title={`Lumee Reel ${id}`}
-        loading="eager"
-        allowFullScreen
-      />
+const ReelPlayer = ({ id, borderColor }: ReelPlayerProps) => {
+  // Define the type for your effect links
+  type EffectLinks = {
+    tiktok: string;
+    instagram: string;
+    qrCode: string;
+  };
+
+  // Map your effect IDs to their respective platform links and QR codes
+  const EFFECT_LINKS: Record<string, EffectLinks> = {
+    "6BWeiXgG6IA": {
+      tiktok: "https://www.tiktok.com/@lumeebooth/effect/123",
+      instagram: "https://www.instagram.com/ar/123456",
+      qrCode: "https://i.imgur.com/yourqrcode1.png"
+    },
+    "xOVj-JCwRCY": {
+      tiktok: "https://www.tiktok.com/@lumeebooth/effect/456",
+      instagram: "https://www.instagram.com/ar/456789",
+      qrCode: "https://i.imgur.com/yourqrcode2.png"
+    },
+    "dQw4w9WgXcQ": {
+      tiktok: "https://www.tiktok.com/@lumeebooth/effect/789",
+      instagram: "https://www.instagram.com/ar/789012",
+      qrCode: "https://i.imgur.com/yourqrcode3.png"
+    },
+    // Add all other effect IDs from your REEL_CATEGORIES
+    "JGwWNGJdvx8": {
+      tiktok: "https://www.tiktok.com/@lumeebooth/effect/101",
+      instagram: "https://www.instagram.com/ar/101112",
+      qrCode: "https://i.imgur.com/yourqrcode4.png"
+    },
+    // Continue with all other IDs...
+    "default": {
+      tiktok: "https://www.tiktok.com/@lumeebooth",
+      instagram: "https://www.instagram.com/lumeebooth",
+      qrCode: "https://i.imgur.com/defaultqr.png"
+    }
+  };
+
+  // Get the links for this specific ID or fallback to default
+  const links = EFFECT_LINKS[id] || EFFECT_LINKS.default;
+
+  return (
+    <div className="reel-container" style={{ borderColor }}>
+      <div className="video-wrapper">
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&playsinline=1`}
+          className="reel-iframe"
+          title={`Lumee Reel ${id}`}
+          loading="eager"
+          allowFullScreen
+        />
+      </div>
+      <div className="reel-actions">
+        {/* TikTok Link Button */}
+        <a 
+          href={links.tiktok} 
+          className="action-button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="icon">🎵</span> TikTok
+        </a>
+
+        {/* Instagram Link Button */}
+        <a 
+          href={links.instagram} 
+          className="action-button"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span className="icon">📸</span> Instagram
+        </a>
+
+        {/* QR Code Button */}
+        <button 
+          className="action-button"
+          onClick={() => window.open(links.qrCode, '_blank')}
+        >
+          <span className="icon">🔍</span> QR Code
+        </button>
+      </div>
     </div>
-    <div className="reel-actions">
-      <button className="action-button">❤️ 1.2K</button>
-      <button className="action-button">💬 328</button>
-      <button className="action-button">↗️ Share</button>
-    </div>
-  </div>
-);
+  );
+};
 
 // ================ 📱 APP COMPONENT ================
 const App = () => {
   const [activeTab, setActiveTab] = useState(0);
   const activeCategory = REEL_CATEGORIES[activeTab];
 
+  // Reusable category tabs component
+  const CategoryTabs = ({ position }: { position: 'top' | 'bottom' }) => (
+    <div className={`category-tabs ${position}`}>
+      {REEL_CATEGORIES.map((category, index) => (
+        <button
+          key={`${position}-${category.label}`}
+          className={`category-tab ${activeTab === index ? 'active' : ''}`}
+          onClick={() => {
+            setActiveTab(index);
+            if (position === 'bottom') {
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          }}
+          style={{
+            backgroundColor: activeTab === index ? category.color : COLORS.cloudWhite,
+            borderColor: category.color
+          }}
+        >
+          <span className="category-emoji">{category.emoji}</span>
+          <span className="category-label">{category.label}</span>
+        </button>
+      ))}
+    </div>
+  );
+
   return (
     <div className="app" style={{ backgroundColor: COLORS.spiritualLight }}>
       <Analytics />
       
-      {/* ================ 🌟 HEADER ================ */}
+      {/* Header */}
       <header className="header">
-        <h1 className="app-title">VENUE.</h1>
+        <h1 className="app-title">AR.</h1>
         <p className="app-description">
-          A LUMEE BOOTH Venue (video menu) of magical AR templates for TikTok & Instagram—fully customizable for your event branding.
+          🛍️✨ Shop AR filters → 😎📲 See reel templates → 🚀👇 Smash Book Now. 👌
         </p>
       </header>
 
-      {/* ================ 🎭 CATEGORY TABS ================ */}
-      <div className="category-tabs">
-        {REEL_CATEGORIES.map((category, index) => (
-          <button
-            key={category.label}
-            className={`category-tab ${activeTab === index ? 'active' : ''}`}
-            onClick={() => setActiveTab(index)}
-            style={{
-              backgroundColor: activeTab === index ? category.color : COLORS.cloudWhite,
-              borderColor: category.color
-            }}
-          >
-            <span className="category-emoji">{category.emoji}</span>
-            <span className="category-label">{category.label}</span>
-          </button>
-        ))}
-      </div>
+      {/* Top Category Tabs */}
+      <CategoryTabs position="top" />
 
-      {/* ================ 🎞️ REEL GRID ================ */}
+      {/* Reel Grid */}
       <main className="reel-grid">
         {activeCategory.ids.map(id => (
           <ReelPlayer 
@@ -148,7 +211,10 @@ const App = () => {
         ))}
       </main>
 
-      {/* ================ 🛎️ SERVICES NAV ================ */}
+      {/* Bottom Category Tabs */}
+      <CategoryTabs position="bottom" />
+
+      {/* CTA Navigation */}
       <nav className="services-nav">
         <a 
           href="https://lumeebooth.com" 

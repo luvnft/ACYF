@@ -758,3 +758,34 @@ body {
     font-size: 14px;
   }
 }
+.category-tabs.bottom {
+  position: sticky;
+  bottom: 0;
+  background: white;
+  padding: 10px 0;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+  z-index: 10;
+}
+.reel-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.9);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  font-size: 14px;
+}
+
+.action-button .icon {
+  font-size: 16px;
+}
