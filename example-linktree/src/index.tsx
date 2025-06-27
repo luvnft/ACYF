@@ -191,7 +191,7 @@ const App = () => {
       
       {/* Header */}
       <header className="header">
-        <h1 className="app-title">AR.</h1>
+        <h1 className="app-title">ACYFUN</h1>
         <p className="app-description">
           🛍️✨ Shop AR filters → 😎📲 See reel templates → 🚀👇 Smash Book Now. 👌
         </p>
