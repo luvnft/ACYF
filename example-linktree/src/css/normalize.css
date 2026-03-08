@@ -1,12 +1,20 @@
-/* =============== 🌟 BASE STYLES =============== */
+/* ================ 🌌 DEEDTUBE BASE STYLES ================ */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Roboto:wght@400;500&display=swap');
+
 :root {
-  --primary: #69c9d0; /* TikTok teal */
-  --secondary: #fe2c55; /* TikTok red */
-  --dark: #121212;
-  --light: #ffffff;
-  --gray: #222222;
-  --sponsored: #6a0dad;
-  --instagram-gradient: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+  --skyBlue: #A0D7E7;
+  --bubblegumPink: #F7A9A8;
+  --lilacPurple: #C7B5FF;
+  --pastelYellow: #FFE07D;
+  --mintGreen: #B4F0A7;
+  --cloudWhite: #FDFDFD;
+  --spiritualLight: #FFF9F0;
+  --creativeCoral: #FF9AA2;
+  --joyfulOrange: #FFB347;
+  --deedGold: #D4AF37;
+  
+  --font-heading: 'Fredoka', sans-serif;
+  --font-body: 'Roboto', sans-serif;
 }
 
 html {
@@ -15,560 +23,11 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: var(--dark);
-  color: var(--light);
-  overscroll-behavior-y: contain;
-  line-height: 1.6;
-}
-
-/* =============== 🎥 VIDEO PLAYER STYLES =============== */
-.booth-container {
-  position: relative;
-  width: 100%;
-  max-width: 375px; /* Mobile-first */
-  margin: 0 auto 24px;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  background: var(--gray);
-}
-
-.booth-container:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(0,0,0,0.5);
-}
-
-.video-wrapper {
-  position: relative;
-  padding-bottom: 177.78%; /* 9:16 aspect ratio */
-  height: 0;
-  background: #000;
-}
-
-.booth-iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  background: var(--dark);
-}
-
-/* =============== 💎 SPONSORED STYLES =============== */
-.sponsored {
-  position: relative;
-  border: 2px solid var(--sponsored);
-}
-
-.sponsored::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--sponsored);
-  z-index: 10;
-}
-
-.sponsor-badge {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  background: var(--sponsored);
-  color: white;
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: bold;
-  z-index: 10;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-}
-
-/* =============== 🎮 ACTION BUTTONS =============== */
-.action-buttons {
-  position: absolute;
-  bottom: 20px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  z-index: 10;
-  padding: 0 16px;
-}
-
-.cta-button {
-  padding: 10px 20px;
-  border-radius: 24px;
-  font-weight: 700;
-  font-size: 14px;
-  text-decoration: none;
-  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-.cta-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-}
-
-.instagram {
-  background: var(--instagram-gradient);
-  color: white;
-}
-
-.tiktok {
-  background: var(--dark);
-  color: var(--light);
-  border: 1px solid rgba(255,255,255,0.2);
-  backdrop-filter: blur(8px);
-}
-
-/* =============== 🏆 HEADER STYLES =============== */
-.header {
-  text-align: center;
-  padding: 32px 16px;
-  position: relative;
-  background: linear-gradient(to bottom, #000000, var(--dark));
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.header-logo {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  margin-bottom: 16px;
-  filter: drop-shadow(0 0 16px rgba(105, 201, 208, 0.6));
-  transition: transform 0.3s ease;
-}
-
-.header-logo:hover {
-  transform: scale(1.05);
-}
-
-.header-title {
-  font-size: 2.5rem;
-  margin: 0 0 12px;
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-}
-
-.header-description {
-  font-size: 1.1rem;
-  color: rgba(255,255,255,0.7);
-  max-width: 600px;
-  margin: 0 auto 24px;
-  line-height: 1.6;
-}
-
-.emoji-nav {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.emoji-button {
-  padding: 12px 20px;
-  border-radius: 24px;
-  background: rgba(255,255,255,0.1);
-  color: var(--light);
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.emoji-button:hover {
-  background: rgba(255,255,255,0.2);
-  transform: translateY(-2px);
-}
-
-/* =============== 🎞️ FEED STYLES =============== */
-.booth-feed {
-  padding: 24px 16px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.booth-feed h2 {
-  font-size: 1.5rem;
-  margin: 0 0 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--light);
-}
-
-.featured {
-  padding-top: 40px;
-}
-
-.booth-block {
-  margin-bottom: 32px;
-}
-
-/* =============== 👣 FOOTER STYLES =============== */
-.footer {
-  text-align: center;
-  padding: 40px 20px;
-  background: #000;
-  margin-top: 60px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.footer-cta {
-  margin-bottom: 24px;
-}
-
-.footer-cta h3 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  color: var(--light);
-}
-
-.footer .cta-button {
-  background: var(--primary);
-  color: var(--dark);
-  font-size: 1.1rem;
-  padding: 14px 28px;
-  margin: 0 auto;
-}
-
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 24px;
-  margin: 24px 0;
-  flex-wrap: wrap;
-}
-
-.social-links a {
-  color: var(--primary);
-  text-decoration: none;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-size: 1.1rem;
-}
-
-.social-links a:hover {
-  color: var(--secondary);
-  transform: translateY(-2px);
-}
-
-.copyright {
-  color: rgba(255,255,255,0.5);
-  font-size: 0.9rem;
-  margin-top: 24px;
-}
-
-/* =============== 📱 RESPONSIVE ADJUSTMENTS =============== */
-@media (max-width: 768px) {
-  .header {
-    padding: 24px 16px;
-  }
-  
-  .header-title {
-    font-size: 2rem;
-  }
-  
-  .header-logo {
-    width: 80px;
-    height: 80px;
-  }
-  
-  .emoji-button {
-    padding: 10px 16px;
-    font-size: 0.9rem;
-  }
-  
-  .action-buttons {
-    flex-wrap: wrap;
-    bottom: 12px;
-  }
-  
-  .cta-button {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-  }
-  
-  .booth-feed h2 {
-    font-size: 1.3rem;
-  }
-}
-
-/* =============== ✨ ANIMATIONS =============== */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.03); }
-  100% { transform: scale(1); }
-}
-
-.booth-container:hover {
-  animation: pulse 2s infinite;
-}
-
-.header-logo {
-  animation: float 4s ease-in-out infinite;
-}
-
-/* =============== 🎨 CUSTOM SCROLLBAR =============== */
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: var(--dark);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--primary);
-  border-radius: 6px;
-  border: 2px solid var(--dark);
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--secondary);
-}
-
-/* =============== 🖼️ CONTENT GRID =============== */
-@media (min-width: 768px) {
-  .booth-feed {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-    gap: 32px;
-  }
-  
-  .featured {
-    grid-column: 1 / -1;
-  }
-}
-/* =============== TIKTOK LAYOUT =============== */
-:root {
-  --primary: #69c9d0;
-  --secondary: #fe2c55;
-  --dark: #121212;
-  --light: #ffffff;
-  --gray: #222222;
-  --sponsored: #6a0dad;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-  background-color: var(--dark);
-  color: var(--light);
-}
-
-.tiktok-header {
-  padding: 16px;
-  text-align: center;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.app-title {
-  font-size: 28px;
-  margin: 0;
-  background: linear-gradient(45deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.app-description {
-  color: rgba(255,255,255,0.7);
-  margin: 8px 0 0;
-  font-size: 14px;
-}
-
-/* =============== EMOJI TABS =============== */
-.emoji-tabs {
-  display: flex;
-  overflow-x: auto;
-  padding: 12px 16px;
-  gap: 16px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-
-.tab {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.7);
-  font-size: 12px;
-  gap: 4px;
-  cursor: pointer;
-  padding: 0;
-  min-width: 60px;
-}
-
-.tab.active {
-  color: var(--light);
-}
-
-.tab.active .emoji {
-  transform: scale(1.2);
-}
-
-.emoji {
-  font-size: 24px;
-  transition: transform 0.2s;
-}
-
-/* =============== REEL GRID =============== */
-.reel-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  padding: 8px;
-}
-
-.reel-item {
-  aspect-ratio: 9/16;
-}
-
-.reel-container {
-  position: relative;
-  height: 100%;
-  width: 100%;
-  background: #000;
-}
-
-.video-wrapper {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.reel-iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.reel-actions {
-  position: absolute;
-  right: 8px;
-  bottom: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.action-button {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 12px;
-  gap: 4px;
-  cursor: pointer;
-}
-
-.action-button .emoji {
-  font-size: 24px;
-}
-
-.action-button .count {
-  font-weight: bold;
-}
-
-.sponsor-badge {
-  position: absolute;
-  top: 8px;
-  left: 8px;
-  background: var(--sponsored);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-/* =============== BOTTOM NAV =============== */
-.bottom-nav {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-around;
-  padding: 12px 0;
-  background: var(--dark);
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.nav-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: rgba(255,255,255,0.7);
-  text-decoration: none;
-  font-size: 12px;
-  gap: 4px;
-}
-
-.nav-item.highlight {
-  color: var(--primary);
-}
-
-.nav-item .emoji {
-  font-size: 24px;
-}
-
-/* =============== RESPONSIVE =============== */
-@media (max-width: 768px) {
-  .reel-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .reel-grid {
-    grid-template-columns: 1fr;
-  }
-}
-/* ================ 🌌 BASE STYLES ================ */
-@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Roboto:wght@400;500&display=swap');
-
-:root {
-  --font-heading: 'Fredoka', sans-serif;
-  --font-body: 'Roboto', sans-serif;
-}
-
-body {
-  margin: 0;
   font-family: var(--font-body);
+  background-color: var(--spiritualLight);
   color: #333;
+  line-height: 1.6;
+  overscroll-behavior-y: contain;
 }
 
 .app {
@@ -580,6 +39,8 @@ body {
 .header {
   text-align: center;
   padding: 24px 16px;
+  background: var(--cloudWhite);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 
 .app-title {
@@ -587,10 +48,11 @@ body {
   font-size: 42px;
   font-weight: 700;
   margin: 0;
-  background: linear-gradient(45deg, #A0D7E7, #C7B5FF);
+  background: linear-gradient(45deg, var(--skyBlue), var(--lilacPurple));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  letter-spacing: 2px;
 }
 
 .app-description {
@@ -599,6 +61,54 @@ body {
   margin: 8px 0 0;
   max-width: 500px;
   margin: 12px auto 0;
+}
+
+/* ================ 🎭 ACTION BUTTONS (Bio Actions) ================ */
+.bio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.bio-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+  text-decoration: none;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bio-btn:hover {
+  transform: scale(1.05);
+}
+
+.mint-btn { 
+  background: var(--pastelYellow); 
+}
+
+.tiktok-btn { 
+  background: #000; 
+  color: #fff; 
+}
+
+.telegram-btn { 
+  background: #0088cc; 
+  color: #fff; 
+}
+
+.primary-action {
+  background-color: var(--deedGold) !important;
+  color: white !important;
+  font-weight: bold !important;
 }
 
 /* ================ 🎭 CATEGORY TABS ================ */
@@ -610,6 +120,17 @@ body {
   padding: 16px;
   max-width: 1000px;
   margin: 0 auto;
+  background: var(--cloudWhite);
+}
+
+.category-tabs.bottom {
+  position: sticky;
+  bottom: 0;
+  background: var(--cloudWhite);
+  padding: 12px 16px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  z-index: 10;
+  border-top: 1px solid rgba(0,0,0,0.05);
 }
 
 .category-tab {
@@ -623,11 +144,16 @@ body {
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
+  background: var(--cloudWhite);
 }
 
 .category-tab.active {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.category-tab:hover {
+  transform: translateY(-2px);
 }
 
 .category-emoji {
@@ -637,10 +163,10 @@ body {
 /* ================ 🎞️ REEL GRID ================ */
 .reel-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
-  padding: 16px;
-  max-width: 1200px;
+  padding: 20px;
+  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -651,12 +177,19 @@ body {
   border: 3px solid;
   box-shadow: 0 6px 16px rgba(0,0,0,0.08);
   background: white;
+  transition: transform 0.2s;
+}
+
+.reel-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
 }
 
 .video-wrapper {
   position: relative;
   padding-bottom: 177.78%; /* 9:16 aspect ratio */
   height: 0;
+  background: #000;
 }
 
 .reel-iframe {
@@ -669,30 +202,44 @@ body {
 }
 
 .reel-actions {
-  position: absolute;
-  right: 12px;
-  bottom: 12px;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
+  gap: 8px;
+  justify-content: center;
+  padding: 12px;
+  background: white;
 }
 
 .action-button {
-  background: rgba(255,255,255,0.9);
-  border: none;
-  border-radius: 20px;
-  padding: 6px 12px;
-  font-size: 14px;
-  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 4px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #f0f0f0;
+  border: none;
   cursor: pointer;
-  transition: transform 0.2s;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: background 0.2s;
 }
 
 .action-button:hover {
-  transform: scale(1.05);
+  background: #e0e0e0;
+}
+
+.action-button .icon {
+  font-size: 16px;
+}
+
+.primary-action {
+  background-color: var(--deedGold);
+  color: white;
+  font-weight: bold;
+}
+
+.primary-action:hover {
+  background-color: #c0a030;
 }
 
 /* ================ 🛎️ SERVICES NAV ================ */
@@ -705,26 +252,30 @@ body {
   justify-content: center;
   gap: 10px;
   padding: 12px 16px;
-  background: white;
-  border-top: 1px solid rgba(0,0,0,0.1);
+  background: var(--cloudWhite);
+  border-top: 1px solid rgba(0,0,0,0.05);
   box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  z-index: 20;
 }
 
 .service-link {
-  padding: 10px 16px;
-  border-radius: 24px;
+  padding: 12px 24px;
+  border-radius: 30px;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
   text-decoration: none;
   color: #333;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   transition: transform 0.2s;
 }
 
 .service-link.highlight {
+  background: var(--joyfulOrange);
+  color: white;
   font-weight: 700;
+  box-shadow: 0 4px 12px rgba(255, 179, 71, 0.3);
 }
 
 .service-link:hover {
@@ -733,9 +284,18 @@ body {
 
 /* ================ 📱 RESPONSIVE ================ */
 @media (max-width: 768px) {
+  .app-title {
+    font-size: 32px;
+  }
+  
+  .app-description {
+    font-size: 16px;
+  }
+  
   .reel-grid {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 16px;
+    padding: 16px;
   }
   
   .category-tabs {
@@ -754,38 +314,64 @@ body {
   }
   
   .service-link {
-    padding: 8px 12px;
+    padding: 10px 18px;
     font-size: 14px;
   }
-}
-.category-tabs.bottom {
-  position: sticky;
-  bottom: 0;
-  background: white;
-  padding: 10px 0;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-  z-index: 10;
-}
-.reel-actions {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
+  
+  .bio-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
 }
 
-.action-button {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  padding: 8px 12px;
-  border-radius: 20px;
-  background: rgba(255,255,255,0.9);
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  color: inherit;
-  font-size: 14px;
+@media (max-width: 480px) {
+  .reel-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .category-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .category-tab {
+    flex-shrink: 0;
+  }
 }
 
-.action-button .icon {
-  font-size: 16px;
+/* ================ ✨ ANIMATIONS ================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.reel-container:hover {
+  animation: pulse 2s infinite;
+}
+
+/* ================ 🎨 CUSTOM SCROLLBAR ================ */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--spiritualLight);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--skyBlue);
+  border-radius: 6px;
+  border: 2px solid var(--spiritualLight);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lilacPurple);
 }
