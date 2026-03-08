@@ -1,8 +1,9 @@
 "use client"
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import "./css/normalize.css";
+import "./css/deedtube.css"; // Created this file for styles
 import { Analytics } from "@vercel/analytics/react";
 
 // ================ 🎨 DEEDTUBE THEME ================
@@ -16,7 +17,7 @@ const COLORS = {
   spiritualLight: "#FFF9F0",
   creativeCoral: "#FF9AA2",
   joyfulOrange: "#FFB347",
-  deedGold: "#D4AF37" // Added for the "Create A Deed" CTA
+  deedGold: "#D4AF37"
 };
 
 // ================ 🏠 PROPERTY CATEGORIES ================
@@ -84,7 +85,6 @@ const ReelPlayer = ({ id, borderColor }: ReelPlayerProps) => {
         />
       </div>
       <div className="reel-actions">
-        {/* The Action Trigger for the BRC-20 Mint */}
         <button 
           className="action-button primary-action"
           onClick={() => window.location.href = `/mint?assetId=${id}`}
@@ -202,38 +202,7 @@ const App = () => {
         </a>
       </nav>
 
-      <style jsx global>{`
-        .bio-actions {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 10px;
-          justify-content: center;
-          margin-top: 15px;
-        }
-        .bio-btn {
-          padding: 8px 16px;
-          border-radius: 20px;
-          border: none;
-          font-size: 0.9rem;
-          font-weight: 600;
-          cursor: pointer;
-          transition: transform 0.2s;
-          text-decoration: none;
-          color: #333;
-          display: flex;
-          align-items: center;
-          gap: 5px;
-        }
-        .mint-btn { background: #FFD700; }
-        .tiktok-btn { background: #000; color: #fff; }
-        .telegram-btn { background: #0088cc; color: #fff; }
-        .bio-btn:hover { transform: scale(1.05); }
-        .primary-action {
-          background-color: #D4AF37 !important;
-          color: white !important;
-          font-weight: bold !important;
-        }
-      `}</style>
+      {/* Styles moved to separate CSS file - this block is now empty */}
     </div>
   );
 };
