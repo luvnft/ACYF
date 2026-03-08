@@ -57,8 +57,8 @@ const REEL_CATEGORIES = [
     description: "Corporate suites and coworking hubs"
   },
   { 
-    emoji: "🚘", 
-    label: "PARK", 
+    emoji: "🏟️", 
+    label: "STADIUM", 
     color: COLORS.lilacPurple,
     ids: ["xOVj-JCwRCY", "dQw4w9WgXcQ", "6BWeiXgG6IA"],
     description: "Parking lots and automotive storage"
