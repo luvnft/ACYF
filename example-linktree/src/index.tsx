@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+"use client"
+
+import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import "./css/normalize.css";
 import { Analytics } from "@vercel/analytics/react";
 
-// ================ 🎨 COLOR THEME ================
+// ================ 🎨 DEEDTUBE THEME ================
 const COLORS = {
   skyBlue: "#A0D7E7",
   bubblegumPink: "#F7A9A8",
@@ -13,154 +15,99 @@ const COLORS = {
   cloudWhite: "#FDFDFD",
   spiritualLight: "#FFF9F0",
   creativeCoral: "#FF9AA2",
-  joyfulOrange: "#FFB347"
+  joyfulOrange: "#FFB347",
+  deedGold: "#D4AF37" // Added for the "Create A Deed" CTA
 };
 
-// ================ 🎥 REEL CATEGORIES ================
+// ================ 🏠 PROPERTY CATEGORIES ================
 const REEL_CATEGORIES = [
   { 
-    emoji: "🎮", 
-    label: "GAMES", 
-    color: COLORS.lilacPurple,
+    emoji: "🏕️", 
+    label: "LAND", 
+    color: COLORS.mintGreen,
     ids: ["6BWeiXgG6IA", "xOVj-JCwRCY", "dQw4w9WgXcQ"],
-    description: "Interactive AR games & filters"
+    description: "Raw acreage and development plots"
   },
   { 
-    emoji: "💒", 
-    label: "WEDDING", 
+    emoji: "🏠", 
+    label: "HOME", 
     color: COLORS.bubblegumPink,
     ids: ["JGwWNGJdvx8", "go_4XaGvH0c", "kJQP7kiw5Fk"],
-    description: "Prayer/worship AR effects"
+    description: "Residential properties and multi-family"
   },
   { 
-    emoji: "🌴", 
-    label: "EVENT", 
-    color: COLORS.mintGreen,
-    ids: ["L2K8Hp9Qr5W", "N4M6Vp8Xs9Z", "P3O7Qr2St1Y"],
-    description: "Beach/travel-themed filters"
-  },
-  { 
-    emoji: "🎉", 
-    label: "ALL EFFECTS", 
+    emoji: "🏭", 
+    label: "WAREHOUSE", 
     color: COLORS.skyBlue,
-    ids: ["OPf0YbXqDm0", "E6Dj9bav3lM", "T9U5FbQj7xN"],
-    description: "Mixed trending filters"
+    ids: ["L2K8Hp9Qr5W", "N4M6Vp8Xs9Z", "P3O7Qr2St1Y"],
+    description: "Industrial and logistics spaces"
   },
   { 
-    emoji: "💄", 
-    label: "BEAUTY", 
+    emoji: "🏪", 
+    label: "STORE", 
+    color: COLORS.pastelYellow,
+    ids: ["OPf0YbXqDm0", "E6Dj9bav3lM", "T9U5FbQj7xN"],
+    description: "Retail and street-front commercial"
+  },
+  { 
+    emoji: "🏢", 
+    label: "OFFICE", 
     color: COLORS.creativeCoral,
     ids: ["DTO8WF5pjZY", "9bZkp7q19f0", "rFSQfMyrgM4"],
-    description: "Makeup/glam AR enhancements"
+    description: "Corporate suites and coworking hubs"
   },
   { 
-    emoji: "🤖", 
-    label: "AI", 
+    emoji: "🚘", 
+    label: "PARK", 
     color: COLORS.lilacPurple,
     ids: ["xOVj-JCwRCY", "dQw4w9WgXcQ", "6BWeiXgG6IA"],
-    description: "Morphing/body distortion effects"
+    description: "Parking lots and automotive storage"
   }
 ];
 
-// Define props interface for ReelPlayer
 interface ReelPlayerProps {
   id: string;
   borderColor: string;
 }
 
-// ================ 🖼️ REEL COMPONENT ================
+// ================ 🎞️ DEED PLAYER COMPONENT ================
 const ReelPlayer = ({ id, borderColor }: ReelPlayerProps) => {
-  // Define the type for your effect links
-  type EffectLinks = {
-    tiktok: string;
-    instagram: string;
-    qrCode: string;
-  };
-
-  // Map your effect IDs to their respective platform links and QR codes
-  const EFFECT_LINKS: Record<string, EffectLinks> = {
-    "6BWeiXgG6IA": {
-      tiktok: "https://www.tiktok.com/@lumeebooth/effect/123",
-      instagram: "https://www.instagram.com/ar/123456",
-      qrCode: "https://i.imgur.com/yourqrcode1.png"
-    },
-    "xOVj-JCwRCY": {
-      tiktok: "https://www.tiktok.com/@lumeebooth/effect/456",
-      instagram: "https://www.instagram.com/ar/456789",
-      qrCode: "https://i.imgur.com/yourqrcode2.png"
-    },
-    "dQw4w9WgXcQ": {
-      tiktok: "https://www.tiktok.com/@lumeebooth/effect/789",
-      instagram: "https://www.instagram.com/ar/789012",
-      qrCode: "https://i.imgur.com/yourqrcode3.png"
-    },
-    // Add all other effect IDs from your REEL_CATEGORIES
-    "JGwWNGJdvx8": {
-      tiktok: "https://www.tiktok.com/@lumeebooth/effect/101",
-      instagram: "https://www.instagram.com/ar/101112",
-      qrCode: "https://i.imgur.com/yourqrcode4.png"
-    },
-    // Continue with all other IDs...
-    "default": {
-      tiktok: "https://www.tiktok.com/@lumeebooth",
-      instagram: "https://www.instagram.com/lumeebooth",
-      qrCode: "https://i.imgur.com/defaultqr.png"
-    }
-  };
-
-  // Get the links for this specific ID or fallback to default
-  const links = EFFECT_LINKS[id] || EFFECT_LINKS.default;
-
   return (
     <div className="reel-container" style={{ borderColor }}>
       <div className="video-wrapper">
         <iframe
           src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&playsinline=1`}
           className="reel-iframe"
-          title={`Lumee Reel ${id}`}
-          loading="eager"
+          title={`DeedTube Tour ${id}`}
+          loading="lazy"
           allowFullScreen
         />
       </div>
       <div className="reel-actions">
-        {/* TikTok Link Button */}
-        <a 
-          href={links.tiktok} 
-          className="action-button"
-          target="_blank"
-          rel="noopener noreferrer"
+        {/* The Action Trigger for the BRC-20 Mint */}
+        <button 
+          className="action-button primary-action"
+          onClick={() => window.location.href = `/mint?assetId=${id}`}
         >
-          <span className="icon">🎵</span> TikTok
-        </a>
+          <span className="icon">📜</span> Mint Fraction
+        </button>
 
-        {/* Instagram Link Button */}
-        <a 
-          href={links.instagram} 
-          className="action-button"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <span className="icon">📸</span> Instagram
-        </a>
-
-        {/* QR Code Button */}
         <button 
           className="action-button"
-          onClick={() => window.open(links.qrCode, '_blank')}
+          onClick={() => window.open(`https://what3words.com/your.location.here`, '_blank')}
         >
-          <span className="icon">🔍</span> QR Code
+          <span className="icon">📍</span> GPS Location
         </button>
       </div>
     </div>
   );
 };
 
-// ================ 📱 APP COMPONENT ================
+// ================ 📱 DEEDTUBE APP ================
 const App = () => {
   const [activeTab, setActiveTab] = useState(0);
   const activeCategory = REEL_CATEGORIES[activeTab];
 
-  // Reusable category tabs component
   const CategoryTabs = ({ position }: { position: 'top' | 'bottom' }) => (
     <div className={`category-tabs ${position}`}>
       {REEL_CATEGORIES.map((category, index) => (
@@ -169,9 +116,7 @@ const App = () => {
           className={`category-tab ${activeTab === index ? 'active' : ''}`}
           onClick={() => {
             setActiveTab(index);
-            if (position === 'bottom') {
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+            if (position === 'bottom') window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
           style={{
             backgroundColor: activeTab === index ? category.color : COLORS.cloudWhite,
@@ -189,18 +134,47 @@ const App = () => {
     <div className="app" style={{ backgroundColor: COLORS.spiritualLight }}>
       <Analytics />
       
-      {/* Header */}
+      {/* Header Section */}
       <header className="header">
-        <h1 className="app-title">ACYFUN</h1>
+        <h1 className="app-title" style={{ letterSpacing: '2px' }}>DEEDTUBE</h1>
         <p className="app-description">
-          🛍️✨ Shop AR filters → 😎📲 See reel templates → 🚀👇 Smash Book Now. 👌
+          🎥 <strong>Watch Property Tours</strong> → 📜 <strong>Mint Fractional Deeds</strong> → 🏢 <strong>Own the Block.</strong>
+          <br />
+          <span style={{ fontSize: '0.8rem', opacity: 0.8 }}>
+            The first video-driven marketplace for Real World Assets on Bitcoin.
+          </span>
         </p>
+
+        {/* Social & Direct Mint Buttons */}
+        <div className="bio-actions">
+          <button 
+            className="bio-btn mint-btn"
+            onClick={() => window.location.href = '/mint'}
+          >
+            📜 Mint a Deed
+          </button>
+          <a 
+            href="https://tiktok.com/@DeedTube" 
+            className="bio-btn tiktok-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            📱 Follow @DeedTube
+          </a>
+          <a 
+            href="https://t.me/DeedTube" 
+            className="bio-btn telegram-btn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            💬 Telegram Group
+          </a>
+        </div>
       </header>
 
-      {/* Top Category Tabs */}
       <CategoryTabs position="top" />
 
-      {/* Reel Grid */}
+      {/* Main Property Feed */}
       <main className="reel-grid">
         {activeCategory.ids.map(id => (
           <ReelPlayer 
@@ -211,19 +185,55 @@ const App = () => {
         ))}
       </main>
 
-      {/* Bottom Category Tabs */}
       <CategoryTabs position="bottom" />
 
-      {/* CTA Navigation */}
+      {/* Main CTA */}
       <nav className="services-nav">
         <a 
-          href="https://lumeebooth.com" 
+          href="/create" 
           className="service-link highlight"
-          style={{ backgroundColor: COLORS.joyfulOrange }}
+          style={{ 
+            backgroundColor: COLORS.joyfulOrange,
+            fontWeight: 'bold',
+            boxShadow: '0 4px 15px rgba(0,0,0,0.1)'
+          }}
         >
-          📅 Book Now
+          🚀 Create A Deed
         </a>
       </nav>
+
+      <style jsx global>{`
+        .bio-actions {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          justify-content: center;
+          margin-top: 15px;
+        }
+        .bio-btn {
+          padding: 8px 16px;
+          border-radius: 20px;
+          border: none;
+          font-size: 0.9rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: transform 0.2s;
+          text-decoration: none;
+          color: #333;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+        }
+        .mint-btn { background: #FFD700; }
+        .tiktok-btn { background: #000; color: #fff; }
+        .telegram-btn { background: #0088cc; color: #fff; }
+        .bio-btn:hover { transform: scale(1.05); }
+        .primary-action {
+          background-color: #D4AF37 !important;
+          color: white !important;
+          font-weight: bold !important;
+        }
+      `}</style>
     </div>
   );
 };
