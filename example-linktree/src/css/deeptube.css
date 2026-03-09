@@ -1,0 +1,377 @@
+/* ================ 🌌 DEEDTUBE BASE STYLES ================ */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@700&family=Roboto:wght@400;500&display=swap');
+
+:root {
+  --skyBlue: #A0D7E7;
+  --bubblegumPink: #F7A9A8;
+  --lilacPurple: #C7B5FF;
+  --pastelYellow: #FFE07D;
+  --mintGreen: #B4F0A7;
+  --cloudWhite: #FDFDFD;
+  --spiritualLight: #FFF9F0;
+  --creativeCoral: #FF9AA2;
+  --joyfulOrange: #FFB347;
+  --deedGold: #D4AF37;
+  
+  --font-heading: 'Fredoka', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background-color: var(--spiritualLight);
+  color: #333;
+  line-height: 1.6;
+  overscroll-behavior-y: contain;
+}
+
+.app {
+  min-height: 100vh;
+  padding-bottom: 80px;
+}
+
+/* ================ 🎀 HEADER ================ */
+.header {
+  text-align: center;
+  padding: 24px 16px;
+  background: var(--cloudWhite);
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.app-title {
+  font-family: var(--font-heading);
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0;
+  background: linear-gradient(45deg, var(--skyBlue), var(--lilacPurple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 2px;
+}
+
+.app-description {
+  font-size: 18px;
+  color: #666;
+  margin: 8px 0 0;
+  max-width: 500px;
+  margin: 12px auto 0;
+}
+
+/* ================ 🎭 ACTION BUTTONS (Bio Actions) ================ */
+.bio-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.bio-btn {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s;
+  text-decoration: none;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.bio-btn:hover {
+  transform: scale(1.05);
+}
+
+.mint-btn { 
+  background: var(--pastelYellow); 
+}
+
+.tiktok-btn { 
+  background: #000; 
+  color: #fff; 
+}
+
+.telegram-btn { 
+  background: #0088cc; 
+  color: #fff; 
+}
+
+.primary-action {
+  background-color: var(--deedGold) !important;
+  color: white !important;
+  font-weight: bold !important;
+}
+
+/* ================ 🎭 CATEGORY TABS ================ */
+.category-tabs {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: var(--cloudWhite);
+}
+
+.category-tabs.bottom {
+  position: sticky;
+  bottom: 0;
+  background: var(--cloudWhite);
+  padding: 12px 16px;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  z-index: 10;
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.category-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 30px;
+  border: 2px solid;
+  font-family: var(--font-heading);
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--cloudWhite);
+}
+
+.category-tab.active {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.category-tab:hover {
+  transform: translateY(-2px);
+}
+
+.category-emoji {
+  font-size: 24px;
+}
+
+/* ================ 🎞️ REEL GRID ================ */
+.reel-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.reel-container {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  background: white;
+  transition: transform 0.2s;
+}
+
+.reel-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.video-wrapper {
+  position: relative;
+  padding-bottom: 177.78%; /* 9:16 aspect ratio */
+  height: 0;
+  background: #000;
+}
+
+.reel-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.reel-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  padding: 12px;
+  background: white;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 12px;
+  border-radius: 20px;
+  background: #f0f0f0;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.action-button:hover {
+  background: #e0e0e0;
+}
+
+.action-button .icon {
+  font-size: 16px;
+}
+
+.primary-action {
+  background-color: var(--deedGold);
+  color: white;
+  font-weight: bold;
+}
+
+.primary-action:hover {
+  background-color: #c0a030;
+}
+
+/* ================ 🛎️ SERVICES NAV ================ */
+.services-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--cloudWhite);
+  border-top: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  z-index: 20;
+}
+
+.service-link {
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  text-decoration: none;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s;
+}
+
+.service-link.highlight {
+  background: var(--joyfulOrange);
+  color: white;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(255, 179, 71, 0.3);
+}
+
+.service-link:hover {
+  transform: translateY(-2px);
+}
+
+/* ================ 📱 RESPONSIVE ================ */
+@media (max-width: 768px) {
+  .app-title {
+    font-size: 32px;
+  }
+  
+  .app-description {
+    font-size: 16px;
+  }
+  
+  .reel-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    padding: 16px;
+  }
+  
+  .category-tabs {
+    gap: 8px;
+    padding: 12px;
+  }
+  
+  .category-tab {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  
+  .services-nav {
+    flex-wrap: wrap;
+    padding: 8px;
+  }
+  
+  .service-link {
+    padding: 10px 18px;
+    font-size: 14px;
+  }
+  
+  .bio-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .reel-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .category-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .category-tab {
+    flex-shrink: 0;
+  }
+}
+
+/* ================ ✨ ANIMATIONS ================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+.reel-container:hover {
+  animation: pulse 2s infinite;
+}
+
+/* ================ 🎨 CUSTOM SCROLLBAR ================ */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--spiritualLight);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--skyBlue);
+  border-radius: 6px;
+  border: 2px solid var(--spiritualLight);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--lilacPurple);
+}
