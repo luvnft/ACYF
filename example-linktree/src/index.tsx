@@ -33,7 +33,7 @@ const REEL_CATEGORIES = [
     emoji: "🏠", 
     label: "HOME", 
     color: COLORS.bubblegumPink,
-    ids: ["48XG8AcVUv4", "5LrQ9I25PRI", "kJQP7kiw5Fk"],
+    ids: ["48XG8AcVUv4", "5LrQ9I25PRI", "JbQsxbF5v1E"],
     description: "Residential properties and multi-family"
   },
   { 
