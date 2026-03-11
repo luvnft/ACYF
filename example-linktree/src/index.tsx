@@ -40,7 +40,7 @@ const REEL_CATEGORIES = [
     emoji: "🏭", 
     label: "WAREHOUSE", 
     color: COLORS.skyBlue,
-    ids: ["L2K8Hp9Qr5W", "N4M6Vp8Xs9Z", "P3O7Qr2St1Y"],
+    ids: ["WCPJ4zUOM58", "N4M6Vp8Xs9Z", "P3O7Qr2St1Y"],
     description: "Industrial and logistics spaces"
   },
   { 
