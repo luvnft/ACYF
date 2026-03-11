@@ -26,14 +26,14 @@ const REEL_CATEGORIES = [
     emoji: "🏕️", 
     label: "LAND", 
     color: COLORS.mintGreen,
-    ids: ["6BWeiXgG6IA", "xOVj-JCwRCY", "dQw4w9WgXcQ"],
+    ids: ["JdHLFyMfjJ0", "whVlCRbqvWQ", "wQwpriB2EP0"],
     description: "Raw acreage and development plots"
   },
   { 
     emoji: "🏠", 
     label: "HOME", 
     color: COLORS.bubblegumPink,
-    ids: ["JGwWNGJdvx8", "go_4XaGvH0c", "kJQP7kiw5Fk"],
+    ids: ["o08tdfABoWc", "go_4XaGvH0c", "kJQP7kiw5Fk"],
     description: "Residential properties and multi-family"
   },
   { 
